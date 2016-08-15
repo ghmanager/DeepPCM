@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<nmeta:Namespace xmi:version="2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Uri="http://github.com/ghmanager/EventSystem" Prefix="mediaStore" Name="Assembly" xmlns:xmi="http://www.omg.org/XMI" xmlns:nmeta="http://nmf.codeplex.com/nmeta/">
+  <Types xmlns:repo="http://github.com/ghmanager/EventRepo" xsi:type="repo:System1" Name="EventSystemArchitecture">
+    <assemblyContexts__ComposedStructure xsi:type="repo:Sender" Name="Sender" />
+    <assemblyContexts__ComposedStructure xsi:type="repo:Receiver" BasicSubscriber="//EventSystemArchitecture//Sender/" Name="Receiver" />
+    <assemblyContexts__ComposedStructure xsi:type="repo:ChannelReceiver" Name="ChannelReceiver" />
+    <assemblyContexts__ComposedStructure xsi:type="repo:ChannelReceiver" Name="ChannelReceiver2" />
+    <References xsi:type="repo:Sender" Name="Sender" />
+    <References xsi:type="repo:Receiver" BasicSubscriber="//EventSystemArchitecture//Sender/" Name="Receiver" />
+    <References xsi:type="repo:ChannelReceiver" Name="ChannelReceiver" />
+    <References xsi:type="repo:ChannelReceiver" Name="ChannelReceiver2" />
+  </Types>
+</nmeta:Namespace>ture xsi:type="repo:EventGroup" EventSubscriber="//EventSystemArchitecture//Receiver/" EventPublisher="//EventSystemArchitecture//Sender/" Name="P2PConnection" />
+    <eventTransmitter__ComposedStructure xsi:type="repo:EventGroupChannel" EventSubscriber="//EventSystemArchitecture//ChannelReceiver/ //EventSystemArchitecture//ChannelReceiver2/" EventPublisher="//EventSystemArchitecture//Sender/" Name="Channel1" />
+    <References xsi:type="repo:Sender" Name="Sender" />
+    <References xsi:type="repo:Receiver" Name="Receiver" />
+    <References xsi:type="repo:ChannelReceiver" Name="ChannelReceiver" />
+    <References xsi:type="repo:ChannelReceiver" Name="ChannelReceiver2" />
+  </Types>
+</nmeta:Namespace>

@@ -1,0 +1,543 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{12CE0ED1-31AB-4004-B985-3D019D955D80}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DeepPCM</RootNamespace>
+    <AssemblyName>DeepPCM</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="NMF.Collections, Version=1.0.45.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\NMF-Repository.1.0.45\lib\net40\NMF.Collections.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="NMF.Expressions, Version=1.0.45.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\NMF-Expressions.1.0.45\lib\net40\NMF.Expressions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="NMF.Expressions.Linq, Version=1.0.45.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\NMF-Expressions.1.0.45\lib\net40\NMF.Expressions.Linq.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="NMF.Models, Version=1.0.45.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\NMF-Repository.1.0.45\lib\net40\NMF.Models.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="NMF.Serialization, Version=1.0.45.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\NMF-Repository.1.0.45\lib\net40\NMF.Serialization.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="NMF.Utilities, Version=1.0.45.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\NMF-Utilities.1.0.45\lib\net40\NMF.Utilities.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Deeppcm\Core\Composition\AssemblyContext.cs" />
+    <Compile Include="Deeppcm\Core\Composition\AssemblyContextConfigParameterUsages__AssemblyContextCollection.cs" />
+    <Compile Include="Deeppcm\Core\Composition\ComposedStructure.cs" />
+    <Compile Include="Deeppcm\Core\Composition\ComposedStructureAssemblyContexts__ComposedStructureCollection.cs" />
+    <Compile Include="Deeppcm\Core\Composition\ComposedStructureConnectors__ComposedStructureCollection.cs" />
+    <Compile Include="Deeppcm\Core\Composition\ComposedStructureEventChannel__ComposedStructureCollection.cs" />
+    <Compile Include="Deeppcm\Core\Composition\Connector.cs" />
+    <Compile Include="Deeppcm\Core\Composition\Delegate.cs" />
+    <Compile Include="Deeppcm\Core\Composition\DelegateBaseTypesCollection.cs" />
+    <Compile Include="Deeppcm\Core\Composition\DelegationConnector.cs" />
+    <Compile Include="Deeppcm\Core\Composition\EventChannel.cs" />
+    <Compile Include="Deeppcm\Core\Composition\EventGroupDelegationConnector.cs" />
+    <Compile Include="Deeppcm\Core\Composition\EventPublisher.cs" />
+    <Compile Include="Deeppcm\Core\Composition\IAssemblyContext.cs" />
+    <Compile Include="Deeppcm\Core\Composition\IComposedStructure.cs" />
+    <Compile Include="Deeppcm\Core\Composition\IConnector.cs" />
+    <Compile Include="Deeppcm\Core\Composition\IDelegate.cs" />
+    <Compile Include="Deeppcm\Core\Composition\IDelegationConnector.cs" />
+    <Compile Include="Deeppcm\Core\Composition\IEventChannel.cs" />
+    <Compile Include="Deeppcm\Core\Composition\IEventGroupDelegationConnector.cs" />
+    <Compile Include="Deeppcm\Core\Composition\IEventPublisher.cs" />
+    <Compile Include="Deeppcm\Core\Composition\IInfrastructureDelegationConnector.cs" />
+    <Compile Include="Deeppcm\Core\Composition\IInfrastructureEventProvider.cs" />
+    <Compile Include="Deeppcm\Core\Composition\IInfrastructureProvider.cs" />
+    <Compile Include="Deeppcm\Core\Composition\InfrastructureDelegationConnector.cs" />
+    <Compile Include="Deeppcm\Core\Composition\InfrastructureEventProvider.cs" />
+    <Compile Include="Deeppcm\Core\Composition\InfrastructureProvider.cs" />
+    <Compile Include="Deeppcm\Core\Composition\IOperationDelegationConnector.cs" />
+    <Compile Include="Deeppcm\Core\Composition\IRequiredResourceDelegationConnector.cs" />
+    <Compile Include="Deeppcm\Core\Composition\OperationDelegationConnector.cs" />
+    <Compile Include="Deeppcm\Core\Composition\RequiredResourceDelegationConnector.cs" />
+    <Compile Include="Deeppcm\Core\Entity\ComposedProvidingRequiringEntity.cs" />
+    <Compile Include="Deeppcm\Core\Entity\Entity.cs" />
+    <Compile Include="Deeppcm\Core\Entity\IComposedProvidingRequiringEntity.cs" />
+    <Compile Include="Deeppcm\Core\Entity\IEntity.cs" />
+    <Compile Include="Deeppcm\Core\Entity\IInterfaceProvidingEntity.cs" />
+    <Compile Include="Deeppcm\Core\Entity\IInterfaceProvidingRequiringEntity.cs" />
+    <Compile Include="Deeppcm\Core\Entity\IInterfaceRequiringEntity.cs" />
+    <Compile Include="Deeppcm\Core\Entity\INamedElement.cs" />
+    <Compile Include="Deeppcm\Core\Entity\InterfaceProvidingEntity.cs" />
+    <Compile Include="Deeppcm\Core\Entity\InterfaceProvidingRequiringEntity.cs" />
+    <Compile Include="Deeppcm\Core\Entity\InterfaceRequiringEntity.cs" />
+    <Compile Include="Deeppcm\Core\Entity\IResourceInterfaceProvidingEntity.cs" />
+    <Compile Include="Deeppcm\Core\Entity\IResourceInterfaceProvidingRequiringEntity.cs" />
+    <Compile Include="Deeppcm\Core\Entity\IResourceInterfaceRequiringEntity.cs" />
+    <Compile Include="Deeppcm\Core\Entity\IResourceProvidedRole.cs" />
+    <Compile Include="Deeppcm\Core\Entity\IResourceRequiredRole.cs" />
+    <Compile Include="Deeppcm\Core\Entity\NamedElement.cs" />
+    <Compile Include="Deeppcm\Core\Entity\ResourceInterfaceProvidingEntity.cs" />
+    <Compile Include="Deeppcm\Core\Entity\ResourceInterfaceProvidingEntityResourceProvidedRoles__ResourceInterfaceProvidingEntityCollection.cs" />
+    <Compile Include="Deeppcm\Core\Entity\ResourceInterfaceProvidingRequiringEntity.cs" />
+    <Compile Include="Deeppcm\Core\Entity\ResourceInterfaceRequiringEntity.cs" />
+    <Compile Include="Deeppcm\Core\Entity\ResourceInterfaceRequiringEntityResourceRequiredRoles__ResourceInterfaceRequiringEntityCollection.cs" />
+    <Compile Include="Deeppcm\Core\Entity\ResourceProvidedRole.cs" />
+    <Compile Include="Deeppcm\Core\Entity\ResourceRequiredRole.cs" />
+    <Compile Include="Deeppcm\Core\IPCMRandomVariable.cs" />
+    <Compile Include="Deeppcm\Core\PCMRandomVariable.cs" />
+    <Compile Include="Deeppcm\DummyClass.cs" />
+    <Compile Include="Deeppcm\IDummyClass.cs" />
+    <Compile Include="Deeppcm\Parameter\CharacterisedVariable.cs" />
+    <Compile Include="Deeppcm\Parameter\ICharacterisedVariable.cs" />
+    <Compile Include="Deeppcm\Parameter\IVariableCharacterisation.cs" />
+    <Compile Include="Deeppcm\Parameter\IVariableUsage.cs" />
+    <Compile Include="Deeppcm\Parameter\VariableCharacterisation.cs" />
+    <Compile Include="Deeppcm\Parameter\VariableCharacterisationType.cs" />
+    <Compile Include="Deeppcm\Parameter\VariableUsage.cs" />
+    <Compile Include="Deeppcm\Parameter\VariableUsageVariableCharacterisation_VariableUsageCollection.cs" />
+    <Compile Include="Deeppcm\Protocol\IProtocol.cs" />
+    <Compile Include="Deeppcm\Protocol\Protocol.cs" />
+    <Compile Include="Deeppcm\Qosannotations\IQoSAnnotations.cs" />
+    <Compile Include="Deeppcm\Qosannotations\ISpecifiedOutputParameterAbstraction.cs" />
+    <Compile Include="Deeppcm\Qosannotations\ISpecifiedQoSAnnotation.cs" />
+    <Compile Include="Deeppcm\Qosannotations\QoSAnnotations.cs" />
+    <Compile Include="Deeppcm\Qosannotations\QoSAnnotationsSpecifiedOutputParameterAbstractions_QoSAnnotationsCollection.cs" />
+    <Compile Include="Deeppcm\Qosannotations\QoSAnnotationsSpecifiedQoSAnnotations_QoSAnnotationsCollection.cs" />
+    <Compile Include="Deeppcm\Qosannotations\Qos_performance\ComponentSpecifiedExecutionTime.cs" />
+    <Compile Include="Deeppcm\Qosannotations\Qos_performance\IComponentSpecifiedExecutionTime.cs" />
+    <Compile Include="Deeppcm\Qosannotations\Qos_performance\ISpecifiedExecutionTime.cs" />
+    <Compile Include="Deeppcm\Qosannotations\Qos_performance\ISystemSpecifiedExecutionTime.cs" />
+    <Compile Include="Deeppcm\Qosannotations\Qos_performance\SpecifiedExecutionTime.cs" />
+    <Compile Include="Deeppcm\Qosannotations\Qos_performance\SystemSpecifiedExecutionTime.cs" />
+    <Compile Include="Deeppcm\Qosannotations\Qos_reliability\ISpecifiedReliabilityAnnotation.cs" />
+    <Compile Include="Deeppcm\Qosannotations\Qos_reliability\SpecifiedReliabilityAnnotation.cs" />
+    <Compile Include="Deeppcm\Qosannotations\Qos_reliability\SpecifiedReliabilityAnnotationExternalFailureOccurrenceDescriptions__SpecifiedReliabilityAnnotationCollection.cs" />
+    <Compile Include="Deeppcm\Qosannotations\SpecifiedOutputParameterAbstraction.cs" />
+    <Compile Include="Deeppcm\Qosannotations\SpecifiedOutputParameterAbstractionExpectedExternalOutputs_SpecifiedOutputParameterAbstractionCollection.cs" />
+    <Compile Include="Deeppcm\Qosannotations\SpecifiedQoSAnnotation.cs" />
+    <Compile Include="Deeppcm\Reliability\ExternalFailureOccurrenceDescription.cs" />
+    <Compile Include="Deeppcm\Reliability\FailureOccurrenceDescription.cs" />
+    <Compile Include="Deeppcm\Reliability\FailureType.cs" />
+    <Compile Include="Deeppcm\Reliability\HardwareInducedFailureType.cs" />
+    <Compile Include="Deeppcm\Reliability\IExternalFailureOccurrenceDescription.cs" />
+    <Compile Include="Deeppcm\Reliability\IFailureOccurrenceDescription.cs" />
+    <Compile Include="Deeppcm\Reliability\IFailureType.cs" />
+    <Compile Include="Deeppcm\Reliability\IHardwareInducedFailureType.cs" />
+    <Compile Include="Deeppcm\Reliability\IInternalFailureOccurrenceDescription.cs" />
+    <Compile Include="Deeppcm\Reliability\INetworkInducedFailureType.cs" />
+    <Compile Include="Deeppcm\Reliability\InternalFailureOccurrenceDescription.cs" />
+    <Compile Include="Deeppcm\Reliability\IResourceTimeoutFailureType.cs" />
+    <Compile Include="Deeppcm\Reliability\ISoftwareInducedFailureType.cs" />
+    <Compile Include="Deeppcm\Reliability\NetworkInducedFailureType.cs" />
+    <Compile Include="Deeppcm\Reliability\ResourceTimeoutFailureType.cs" />
+    <Compile Include="Deeppcm\Reliability\SoftwareInducedFailureType.cs" />
+    <Compile Include="Deeppcm\Reliability\SoftwareInducedFailureTypeInternalFailureOccurrenceDescriptions__SoftwareInducedFailureTypeCollection.cs" />
+    <Compile Include="Deeppcm\Repository\BasicComponent.cs" />
+    <Compile Include="Deeppcm\Repository\BasicComponentPassiveResource_BasicComponentCollection.cs" />
+    <Compile Include="Deeppcm\Repository\BasicComponentServiceEffectSpecifications__BasicComponentCollection.cs" />
+    <Compile Include="Deeppcm\Repository\CollectionDataType.cs" />
+    <Compile Include="Deeppcm\Repository\CompleteComponentType.cs" />
+    <Compile Include="Deeppcm\Repository\ComponentType.cs" />
+    <Compile Include="Deeppcm\Repository\CompositeComponent.cs" />
+    <Compile Include="Deeppcm\Repository\CompositeDataType.cs" />
+    <Compile Include="Deeppcm\Repository\CompositeDataTypeInnerDeclaration_CompositeDataTypeCollection.cs" />
+    <Compile Include="Deeppcm\Repository\DataType.cs" />
+    <Compile Include="Deeppcm\Repository\EventGroup.cs" />
+    <Compile Include="Deeppcm\Repository\EventGroupBaseTypesCollection.cs" />
+    <Compile Include="Deeppcm\Repository\EventGroupEventTypes__EventGroupCollection.cs" />
+    <Compile Include="Deeppcm\Repository\EventGroupSubscriber.cs" />
+    <Compile Include="Deeppcm\Repository\EventType.cs" />
+    <Compile Include="Deeppcm\Repository\ExceptionType.cs" />
+    <Compile Include="Deeppcm\Repository\IBasicComponent.cs" />
+    <Compile Include="Deeppcm\Repository\ICollectionDataType.cs" />
+    <Compile Include="Deeppcm\Repository\ICompleteComponentType.cs" />
+    <Compile Include="Deeppcm\Repository\ICompositeComponent.cs" />
+    <Compile Include="Deeppcm\Repository\ICompositeDataType.cs" />
+    <Compile Include="Deeppcm\Repository\IDataType.cs" />
+    <Compile Include="Deeppcm\Repository\IEventGroup.cs" />
+    <Compile Include="Deeppcm\Repository\IEventGroupSubscriber.cs" />
+    <Compile Include="Deeppcm\Repository\IEventType.cs" />
+    <Compile Include="Deeppcm\Repository\IExceptionType.cs" />
+    <Compile Include="Deeppcm\Repository\IImplementationComponentType.cs" />
+    <Compile Include="Deeppcm\Repository\IInfrastructureInterface.cs" />
+    <Compile Include="Deeppcm\Repository\IInfrastructureSignature.cs" />
+    <Compile Include="Deeppcm\Repository\IInnerDeclaration.cs" />
+    <Compile Include="Deeppcm\Repository\IInterface.cs" />
+    <Compile Include="Deeppcm\Repository\ImplementationComponentType.cs" />
+    <Compile Include="Deeppcm\Repository\InfrastructureInterface.cs" />
+    <Compile Include="Deeppcm\Repository\InfrastructureInterfaceBaseTypesCollection.cs" />
+    <Compile Include="Deeppcm\Repository\InfrastructureInterfaceInfrastructureSignatures__InfrastructureInterfaceCollection.cs" />
+    <Compile Include="Deeppcm\Repository\InfrastructureSignature.cs" />
+    <Compile Include="Deeppcm\Repository\InfrastructureSignatureParameters__InfrastructureSignatureCollection.cs" />
+    <Compile Include="Deeppcm\Repository\InnerDeclaration.cs" />
+    <Compile Include="Deeppcm\Repository\Interface.cs" />
+    <Compile Include="Deeppcm\Repository\InterfaceRequiredCharacterisationsCollection.cs" />
+    <Compile Include="Deeppcm\Repository\IOperationInterface.cs" />
+    <Compile Include="Deeppcm\Repository\IOperationSignature.cs" />
+    <Compile Include="Deeppcm\Repository\IParameter.cs" />
+    <Compile Include="Deeppcm\Repository\IPassiveResource.cs" />
+    <Compile Include="Deeppcm\Repository\IPrimitiveDataType.cs" />
+    <Compile Include="Deeppcm\Repository\IProvidesComponentType.cs" />
+    <Compile Include="Deeppcm\Repository\IRepository.cs" />
+    <Compile Include="Deeppcm\Repository\IRepositoryComponent.cs" />
+    <Compile Include="Deeppcm\Repository\IRequiredCharacterisation.cs" />
+    <Compile Include="Deeppcm\Repository\IRequiredInfrastructureInterface.cs" />
+    <Compile Include="Deeppcm\Repository\IRequiredInterface.cs" />
+    <Compile Include="Deeppcm\Repository\IRequiredOperationInterface.cs" />
+    <Compile Include="Deeppcm\Repository\IRole.cs" />
+    <Compile Include="Deeppcm\Repository\ISignature.cs" />
+    <Compile Include="Deeppcm\Repository\OperationInterface.cs" />
+    <Compile Include="Deeppcm\Repository\OperationInterfaceBaseTypesCollection.cs" />
+    <Compile Include="Deeppcm\Repository\OperationInterfaceSignatures__OperationInterfaceCollection.cs" />
+    <Compile Include="Deeppcm\Repository\OperationSignature.cs" />
+    <Compile Include="Deeppcm\Repository\OperationSignatureParameters__OperationSignatureCollection.cs" />
+    <Compile Include="Deeppcm\Repository\Parameter.cs" />
+    <Compile Include="Deeppcm\Repository\ParameterModifier.cs" />
+    <Compile Include="Deeppcm\Repository\PassiveResource.cs" />
+    <Compile Include="Deeppcm\Repository\PrimitiveDataType.cs" />
+    <Compile Include="Deeppcm\Repository\PrimitiveTypeEnum.cs" />
+    <Compile Include="Deeppcm\Repository\ProvidesComponentType.cs" />
+    <Compile Include="Deeppcm\Repository\Repository.cs" />
+    <Compile Include="Deeppcm\Repository\RepositoryComponent.cs" />
+    <Compile Include="Deeppcm\Repository\RepositoryComponentBaseTypesCollection.cs" />
+    <Compile Include="Deeppcm\Repository\RepositoryComponents__RepositoryCollection.cs" />
+    <Compile Include="Deeppcm\Repository\RepositoryDataTypes__RepositoryCollection.cs" />
+    <Compile Include="Deeppcm\Repository\RepositoryDelegate__RepositoryCollection.cs" />
+    <Compile Include="Deeppcm\Repository\RepositoryFailureTypes__RepositoryCollection.cs" />
+    <Compile Include="Deeppcm\Repository\RepositoryInterfaces__RepositoryCollection.cs" />
+    <Compile Include="Deeppcm\Repository\RequiredCharacterisation.cs" />
+    <Compile Include="Deeppcm\Repository\RequiredInfrastructureInterface.cs" />
+    <Compile Include="Deeppcm\Repository\RequiredInterface.cs" />
+    <Compile Include="Deeppcm\Repository\RequiredOperationInterface.cs" />
+    <Compile Include="Deeppcm\Repository\Role.cs" />
+    <Compile Include="Deeppcm\Repository\Signature.cs" />
+    <Compile Include="Deeppcm\Resourceenvironment\CommunicationLinkResourceSpecification.cs" />
+    <Compile Include="Deeppcm\Resourceenvironment\ICommunicationLinkResourceSpecification.cs" />
+    <Compile Include="Deeppcm\Resourceenvironment\ILinkingResource.cs" />
+    <Compile Include="Deeppcm\Resourceenvironment\IProcessingResourceSpecification.cs" />
+    <Compile Include="Deeppcm\Resourceenvironment\IResourceContainer.cs" />
+    <Compile Include="Deeppcm\Resourceenvironment\IResourceEnvironment.cs" />
+    <Compile Include="Deeppcm\Resourceenvironment\ISystemDeployment.cs" />
+    <Compile Include="Deeppcm\Resourceenvironment\LinkingResource.cs" />
+    <Compile Include="Deeppcm\Resourceenvironment\ProcessingResourceSpecification.cs" />
+    <Compile Include="Deeppcm\Resourceenvironment\ResourceContainer.cs" />
+    <Compile Include="Deeppcm\Resourceenvironment\ResourceContainerActiveResourceSpecifications_ResourceContainerCollection.cs" />
+    <Compile Include="Deeppcm\Resourceenvironment\ResourceContainerNestedResourceContainers__ResourceContainerCollection.cs" />
+    <Compile Include="Deeppcm\Resourceenvironment\ResourceEnvironment.cs" />
+    <Compile Include="Deeppcm\Resourceenvironment\ResourceEnvironmentLinkingResources__ResourceEnvironmentCollection.cs" />
+    <Compile Include="Deeppcm\Resourceenvironment\ResourceEnvironmentResourceContainer_ResourceEnvironmentCollection.cs" />
+    <Compile Include="Deeppcm\Resourceenvironment\SystemDeployment.cs" />
+    <Compile Include="Deeppcm\Resourcetype\CommunicationLinkResourceType.cs" />
+    <Compile Include="Deeppcm\Resourcetype\ICommunicationLinkResourceType.cs" />
+    <Compile Include="Deeppcm\Resourcetype\IProcessingResourceType.cs" />
+    <Compile Include="Deeppcm\Resourcetype\IResourceInterface.cs" />
+    <Compile Include="Deeppcm\Resourcetype\IResourceRepository.cs" />
+    <Compile Include="Deeppcm\Resourcetype\IResourceSignature.cs" />
+    <Compile Include="Deeppcm\Resourcetype\IResourceType.cs" />
+    <Compile Include="Deeppcm\Resourcetype\ISchedulingPolicy.cs" />
+    <Compile Include="Deeppcm\Resourcetype\ProcessingResourceType.cs" />
+    <Compile Include="Deeppcm\Resourcetype\ResourceInterface.cs" />
+    <Compile Include="Deeppcm\Resourcetype\ResourceInterfaceResourceSignatures__ResourceInterfaceCollection.cs" />
+    <Compile Include="Deeppcm\Resourcetype\ResourceRepository.cs" />
+    <Compile Include="Deeppcm\Resourcetype\ResourceRepositoryAvailableResourceTypes_ResourceRepositoryCollection.cs" />
+    <Compile Include="Deeppcm\Resourcetype\ResourceRepositoryResourceInterfaces__ResourceRepositoryCollection.cs" />
+    <Compile Include="Deeppcm\Resourcetype\ResourceRepositorySchedulingPolicies__ResourceRepositoryCollection.cs" />
+    <Compile Include="Deeppcm\Resourcetype\ResourceSignature.cs" />
+    <Compile Include="Deeppcm\Resourcetype\ResourceType.cs" />
+    <Compile Include="Deeppcm\Resourcetype\SchedulingPolicy.cs" />
+    <Compile Include="Deeppcm\Seff\AbstractAction.cs" />
+    <Compile Include="Deeppcm\Seff\AbstractBranchTransition.cs" />
+    <Compile Include="Deeppcm\Seff\AbstractInternalControlFlowAction.cs" />
+    <Compile Include="Deeppcm\Seff\AbstractInternalControlFlowActionInfrastructureCall__ActionCollection.cs" />
+    <Compile Include="Deeppcm\Seff\AbstractInternalControlFlowActionResourceCall__ActionCollection.cs" />
+    <Compile Include="Deeppcm\Seff\AbstractInternalControlFlowActionResourceDemand_ActionCollection.cs" />
+    <Compile Include="Deeppcm\Seff\AbstractLoopAction.cs" />
+    <Compile Include="Deeppcm\Seff\AcquireAction.cs" />
+    <Compile Include="Deeppcm\Seff\BranchAction.cs" />
+    <Compile Include="Deeppcm\Seff\BranchActionBranches_BranchCollection.cs" />
+    <Compile Include="Deeppcm\Seff\CallAction.cs" />
+    <Compile Include="Deeppcm\Seff\CallActionInputVariableUsages__CallActionCollection.cs" />
+    <Compile Include="Deeppcm\Seff\CallReturnAction.cs" />
+    <Compile Include="Deeppcm\Seff\CallReturnActionReturnVariableUsage__CallReturnActionCollection.cs" />
+    <Compile Include="Deeppcm\Seff\CollectionIteratorAction.cs" />
+    <Compile Include="Deeppcm\Seff\EmitEventAction.cs" />
+    <Compile Include="Deeppcm\Seff\ExternalCallAction.cs" />
+    <Compile Include="Deeppcm\Seff\ForkAction.cs" />
+    <Compile Include="Deeppcm\Seff\ForkActionAsynchronousForkedBehaviours_ForkActionCollection.cs" />
+    <Compile Include="Deeppcm\Seff\ForkedBehaviour.cs" />
+    <Compile Include="Deeppcm\Seff\GuardedBranchTransition.cs" />
+    <Compile Include="Deeppcm\Seff\IAbstractAction.cs" />
+    <Compile Include="Deeppcm\Seff\IAbstractBranchTransition.cs" />
+    <Compile Include="Deeppcm\Seff\IAbstractInternalControlFlowAction.cs" />
+    <Compile Include="Deeppcm\Seff\IAbstractLoopAction.cs" />
+    <Compile Include="Deeppcm\Seff\IAcquireAction.cs" />
+    <Compile Include="Deeppcm\Seff\IBranchAction.cs" />
+    <Compile Include="Deeppcm\Seff\ICallAction.cs" />
+    <Compile Include="Deeppcm\Seff\ICallReturnAction.cs" />
+    <Compile Include="Deeppcm\Seff\ICollectionIteratorAction.cs" />
+    <Compile Include="Deeppcm\Seff\IEmitEventAction.cs" />
+    <Compile Include="Deeppcm\Seff\IExternalCallAction.cs" />
+    <Compile Include="Deeppcm\Seff\IForkAction.cs" />
+    <Compile Include="Deeppcm\Seff\IForkedBehaviour.cs" />
+    <Compile Include="Deeppcm\Seff\IGuardedBranchTransition.cs" />
+    <Compile Include="Deeppcm\Seff\IInternalAction.cs" />
+    <Compile Include="Deeppcm\Seff\IInternalCallAction.cs" />
+    <Compile Include="Deeppcm\Seff\ILoopAction.cs" />
+    <Compile Include="Deeppcm\Seff\InternalAction.cs" />
+    <Compile Include="Deeppcm\Seff\InternalActionInternalFailureOccurrenceDescriptions__InternalActionCollection.cs" />
+    <Compile Include="Deeppcm\Seff\InternalCallAction.cs" />
+    <Compile Include="Deeppcm\Seff\IProbabilisticBranchTransition.cs" />
+    <Compile Include="Deeppcm\Seff\IReleaseAction.cs" />
+    <Compile Include="Deeppcm\Seff\IResourceDemandingBehaviour.cs" />
+    <Compile Include="Deeppcm\Seff\IResourceDemandingInternalBehaviour.cs" />
+    <Compile Include="Deeppcm\Seff\IResourceDemandingSEFF.cs" />
+    <Compile Include="Deeppcm\Seff\IServiceEffectSpecification.cs" />
+    <Compile Include="Deeppcm\Seff\ISetVariableAction.cs" />
+    <Compile Include="Deeppcm\Seff\IStartAction.cs" />
+    <Compile Include="Deeppcm\Seff\IStopAction.cs" />
+    <Compile Include="Deeppcm\Seff\ISynchronisationPoint.cs" />
+    <Compile Include="Deeppcm\Seff\LoopAction.cs" />
+    <Compile Include="Deeppcm\Seff\ProbabilisticBranchTransition.cs" />
+    <Compile Include="Deeppcm\Seff\ReleaseAction.cs" />
+    <Compile Include="Deeppcm\Seff\ResourceDemandingBehaviour.cs" />
+    <Compile Include="Deeppcm\Seff\ResourceDemandingBehaviourSteps_BehaviourCollection.cs" />
+    <Compile Include="Deeppcm\Seff\ResourceDemandingInternalBehaviour.cs" />
+    <Compile Include="Deeppcm\Seff\ResourceDemandingSEFF.cs" />
+    <Compile Include="Deeppcm\Seff\ResourceDemandingSEFFResourceDemandingInternalBehavioursCollection.cs" />
+    <Compile Include="Deeppcm\Seff\Seff_performance\IInfrastructureCall.cs" />
+    <Compile Include="Deeppcm\Seff\Seff_performance\InfrastructureCall.cs" />
+    <Compile Include="Deeppcm\Seff\Seff_performance\IParametricResourceDemand.cs" />
+    <Compile Include="Deeppcm\Seff\Seff_performance\IResourceCall.cs" />
+    <Compile Include="Deeppcm\Seff\Seff_performance\ParametricResourceDemand.cs" />
+    <Compile Include="Deeppcm\Seff\Seff_performance\ResourceCall.cs" />
+    <Compile Include="Deeppcm\Seff\Seff_reliability\FailureHandlingEntity.cs" />
+    <Compile Include="Deeppcm\Seff\Seff_reliability\IFailureHandlingEntity.cs" />
+    <Compile Include="Deeppcm\Seff\Seff_reliability\IRecoveryAction.cs" />
+    <Compile Include="Deeppcm\Seff\Seff_reliability\IRecoveryActionBehaviour.cs" />
+    <Compile Include="Deeppcm\Seff\Seff_reliability\RecoveryAction.cs" />
+    <Compile Include="Deeppcm\Seff\Seff_reliability\RecoveryActionBehaviour.cs" />
+    <Compile Include="Deeppcm\Seff\Seff_reliability\RecoveryActionRecoveryActionBehaviours__RecoveryActionCollection.cs" />
+    <Compile Include="Deeppcm\Seff\ServiceEffectSpecification.cs" />
+    <Compile Include="Deeppcm\Seff\SetVariableAction.cs" />
+    <Compile Include="Deeppcm\Seff\SetVariableActionLocalVariableUsages_SetVariableActionCollection.cs" />
+    <Compile Include="Deeppcm\Seff\StartAction.cs" />
+    <Compile Include="Deeppcm\Seff\StopAction.cs" />
+    <Compile Include="Deeppcm\Seff\SynchronisationPoint.cs" />
+    <Compile Include="Deeppcm\Seff\SynchronisationPointOutputParameterUsage_SynchronisationPointCollection.cs" />
+    <Compile Include="Deeppcm\Seff\SynchronisationPointSynchronousForkedBehaviours_SynchronisationPointCollection.cs" />
+    <Compile Include="Deeppcm\Subsystem\ISubSystem.cs" />
+    <Compile Include="Deeppcm\Subsystem\SubSystem.cs" />
+    <Compile Include="Deeppcm\System0\ISystem0.cs" />
+    <Compile Include="Deeppcm\System0\System0.cs" />
+    <Compile Include="Deeppcm\System0\SystemBaseTypesCollection.cs" />
+    <Compile Include="Deeppcm\System0\SystemQosAnnotations_SystemCollection.cs" />
+    <Compile Include="Deeppcm\Usagemodel\AbstractUserAction.cs" />
+    <Compile Include="Deeppcm\Usagemodel\Branch.cs" />
+    <Compile Include="Deeppcm\Usagemodel\BranchBranchTransitions_BranchCollection.cs" />
+    <Compile Include="Deeppcm\Usagemodel\BranchTransition.cs" />
+    <Compile Include="Deeppcm\Usagemodel\ClosedWorkload.cs" />
+    <Compile Include="Deeppcm\Usagemodel\Delay.cs" />
+    <Compile Include="Deeppcm\Usagemodel\EntryLevelSystemCall.cs" />
+    <Compile Include="Deeppcm\Usagemodel\EntryLevelSystemCallInputParameterUsages_EntryLevelSystemCallCollection.cs" />
+    <Compile Include="Deeppcm\Usagemodel\EntryLevelSystemCallOutputParameterUsages_EntryLevelSystemCallCollection.cs" />
+    <Compile Include="Deeppcm\Usagemodel\IAbstractUserAction.cs" />
+    <Compile Include="Deeppcm\Usagemodel\IBranch.cs" />
+    <Compile Include="Deeppcm\Usagemodel\IBranchTransition.cs" />
+    <Compile Include="Deeppcm\Usagemodel\IClosedWorkload.cs" />
+    <Compile Include="Deeppcm\Usagemodel\IDelay.cs" />
+    <Compile Include="Deeppcm\Usagemodel\IEntryLevelSystemCall.cs" />
+    <Compile Include="Deeppcm\Usagemodel\ILoop.cs" />
+    <Compile Include="Deeppcm\Usagemodel\IOpenWorkload.cs" />
+    <Compile Include="Deeppcm\Usagemodel\IScenarioBehaviour.cs" />
+    <Compile Include="Deeppcm\Usagemodel\IStart.cs" />
+    <Compile Include="Deeppcm\Usagemodel\IStop.cs" />
+    <Compile Include="Deeppcm\Usagemodel\IUsageModel.cs" />
+    <Compile Include="Deeppcm\Usagemodel\IUsageScenario.cs" />
+    <Compile Include="Deeppcm\Usagemodel\IUserData.cs" />
+    <Compile Include="Deeppcm\Usagemodel\IWorkload.cs" />
+    <Compile Include="Deeppcm\Usagemodel\Loop.cs" />
+    <Compile Include="Deeppcm\Usagemodel\OpenWorkload.cs" />
+    <Compile Include="Deeppcm\Usagemodel\ScenarioBehaviour.cs" />
+    <Compile Include="Deeppcm\Usagemodel\ScenarioBehaviourActions_ScenarioBehaviourCollection.cs" />
+    <Compile Include="Deeppcm\Usagemodel\Start.cs" />
+    <Compile Include="Deeppcm\Usagemodel\Stop.cs" />
+    <Compile Include="Deeppcm\Usagemodel\UsageModel.cs" />
+    <Compile Include="Deeppcm\Usagemodel\UsageModelUsageScenario_UsageModelCollection.cs" />
+    <Compile Include="Deeppcm\Usagemodel\UsageModelUserData_UsageModelCollection.cs" />
+    <Compile Include="Deeppcm\Usagemodel\UsageScenario.cs" />
+    <Compile Include="Deeppcm\Usagemodel\UserData.cs" />
+    <Compile Include="Deeppcm\Usagemodel\UserDataUserDataParameterUsages_UserDataCollection.cs" />
+    <Compile Include="Deeppcm\Usagemodel\Workload.cs" />
+    <Compile Include="Identifier\Identifier.cs" />
+    <Compile Include="Identifier\IIdentifier.cs" />
+    <Compile Include="Probfunction\BoxedPDF.cs" />
+    <Compile Include="Probfunction\Complex.cs" />
+    <Compile Include="Probfunction\ContinuousPDF.cs" />
+    <Compile Include="Probfunction\ContinuousSample.cs" />
+    <Compile Include="Probfunction\ExponentialDistribution.cs" />
+    <Compile Include="Probfunction\GammaDistribution.cs" />
+    <Compile Include="Probfunction\IBoxedPDF.cs" />
+    <Compile Include="Probfunction\IComplex.cs" />
+    <Compile Include="Probfunction\IContinuousPDF.cs" />
+    <Compile Include="Probfunction\IContinuousSample.cs" />
+    <Compile Include="Probfunction\IExponentialDistribution.cs" />
+    <Compile Include="Probfunction\IGammaDistribution.cs" />
+    <Compile Include="Probfunction\ILognormalDistribution.cs" />
+    <Compile Include="Probfunction\INormalDistribution.cs" />
+    <Compile Include="Probfunction\IProbabilityDensityFunction.cs" />
+    <Compile Include="Probfunction\IProbabilityFunction.cs" />
+    <Compile Include="Probfunction\IProbabilityMassFunction.cs" />
+    <Compile Include="Probfunction\ISample.cs" />
+    <Compile Include="Probfunction\ISamplePDF.cs" />
+    <Compile Include="Probfunction\LognormalDistribution.cs" />
+    <Compile Include="Probfunction\NormalDistribution.cs" />
+    <Compile Include="Probfunction\ProbabilityDensityFunction.cs" />
+    <Compile Include="Probfunction\ProbabilityFunction.cs" />
+    <Compile Include="Probfunction\ProbabilityMassFunction.cs" />
+    <Compile Include="Probfunction\Sample.cs" />
+    <Compile Include="Probfunction\SamplePDF.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Stoex\AbstractNamedReference.cs" />
+    <Compile Include="Stoex\Atom.cs" />
+    <Compile Include="Stoex\BooleanExpression.cs" />
+    <Compile Include="Stoex\BooleanOperations.cs" />
+    <Compile Include="Stoex\BooleanOperatorExpression.cs" />
+    <Compile Include="Stoex\BoolLiteral.cs" />
+    <Compile Include="Stoex\CompareExpression.cs" />
+    <Compile Include="Stoex\CompareOperations.cs" />
+    <Compile Include="Stoex\Comparison.cs" />
+    <Compile Include="Stoex\DoubleLiteral.cs" />
+    <Compile Include="Stoex\Expression.cs" />
+    <Compile Include="Stoex\FunctionLiteral.cs" />
+    <Compile Include="Stoex\IAbstractNamedReference.cs" />
+    <Compile Include="Stoex\IAtom.cs" />
+    <Compile Include="Stoex\IBooleanExpression.cs" />
+    <Compile Include="Stoex\IBooleanOperatorExpression.cs" />
+    <Compile Include="Stoex\IBoolLiteral.cs" />
+    <Compile Include="Stoex\ICompareExpression.cs" />
+    <Compile Include="Stoex\IComparison.cs" />
+    <Compile Include="Stoex\IDoubleLiteral.cs" />
+    <Compile Include="Stoex\IExpression.cs" />
+    <Compile Include="Stoex\IfElse.cs" />
+    <Compile Include="Stoex\IfElseExpression.cs" />
+    <Compile Include="Stoex\IFunctionLiteral.cs" />
+    <Compile Include="Stoex\IIfElse.cs" />
+    <Compile Include="Stoex\IIfElseExpression.cs" />
+    <Compile Include="Stoex\IIntLiteral.cs" />
+    <Compile Include="Stoex\INamespaceReference.cs" />
+    <Compile Include="Stoex\INegativeExpression.cs" />
+    <Compile Include="Stoex\INotExpression.cs" />
+    <Compile Include="Stoex\IntLiteral.cs" />
+    <Compile Include="Stoex\INumericLiteral.cs" />
+    <Compile Include="Stoex\IParenthesis.cs" />
+    <Compile Include="Stoex\IPower.cs" />
+    <Compile Include="Stoex\IPowerExpression.cs" />
+    <Compile Include="Stoex\IProbabilityFunctionLiteral.cs" />
+    <Compile Include="Stoex\IProduct.cs" />
+    <Compile Include="Stoex\IProductExpression.cs" />
+    <Compile Include="Stoex\IRandomVariable.cs" />
+    <Compile Include="Stoex\IStringLiteral.cs" />
+    <Compile Include="Stoex\ITerm.cs" />
+    <Compile Include="Stoex\ITermExpression.cs" />
+    <Compile Include="Stoex\IUnary.cs" />
+    <Compile Include="Stoex\IVariable.cs" />
+    <Compile Include="Stoex\IVariableReference.cs" />
+    <Compile Include="Stoex\NamespaceReference.cs" />
+    <Compile Include="Stoex\NegativeExpression.cs" />
+    <Compile Include="Stoex\NotExpression.cs" />
+    <Compile Include="Stoex\NumericLiteral.cs" />
+    <Compile Include="Stoex\Parenthesis.cs" />
+    <Compile Include="Stoex\Power.cs" />
+    <Compile Include="Stoex\PowerExpression.cs" />
+    <Compile Include="Stoex\ProbabilityFunctionLiteral.cs" />
+    <Compile Include="Stoex\Product.cs" />
+    <Compile Include="Stoex\ProductExpression.cs" />
+    <Compile Include="Stoex\ProductOperations.cs" />
+    <Compile Include="Stoex\RandomVariable.cs" />
+    <Compile Include="Stoex\StringLiteral.cs" />
+    <Compile Include="Stoex\Term.cs" />
+    <Compile Include="Stoex\TermExpression.cs" />
+    <Compile Include="Stoex\TermOperations.cs" />
+    <Compile Include="Stoex\Unary.cs" />
+    <Compile Include="Stoex\Variable.cs" />
+    <Compile Include="Stoex\VariableReference.cs" />
+    <Compile Include="Units\BaseUnit.cs" />
+    <Compile Include="Units\IBaseUnit.cs" />
+    <Compile Include="Units\IUnit.cs" />
+    <Compile Include="Units\IUnitCarryingElement.cs" />
+    <Compile Include="Units\IUnitLiteral.cs" />
+    <Compile Include="Units\IUnitMultiplication.cs" />
+    <Compile Include="Units\IUnitPower.cs" />
+    <Compile Include="Units\IUnitRepository.cs" />
+    <Compile Include="Units\Unit.cs" />
+    <Compile Include="Units\UnitCarryingElement.cs" />
+    <Compile Include="Units\UnitLiteral.cs" />
+    <Compile Include="Units\UnitMultiplication.cs" />
+    <Compile Include="Units\UnitPower.cs" />
+    <Compile Include="Units\UnitRepository.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="..\DeepPCM.nmeta">
+      <Link>DeepPCM.nmeta</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\identifier.nmeta">
+      <Link>identifier.nmeta</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\ProbabilityFunction.nmeta">
+      <Link>ProbabilityFunction.nmeta</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\stoex.nmeta">
+      <Link>stoex.nmeta</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\Units.nmeta">
+      <Link>Units.nmeta</Link>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

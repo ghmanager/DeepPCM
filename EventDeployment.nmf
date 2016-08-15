@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<nmeta:Namespace xmi:version="2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Uri="http://github.com/ghmanager/EventDeployment" Prefix="mediaStore" Name="Deployment" xmlns:xmi="http://www.omg.org/XMI" xmlns:nmeta="http://nmf.codeplex.com/nmeta/">
+  <Types xmlns:mediaStore="http://github.com/ghmanager/EventSystem" xsi:type="mediaStore:EventSystemArchitecture" Environment="$0" Name="Deployment">
+    <Sender id="ApplicationServer" />
+    <Receiver id="ApplicationServer" />
+    <ChannelReceiver id="ApplicationServer" />
+    <ChannelReceiver2 id="ApplicationServer" />
+  </Types>
+</nmeta:Namespace>

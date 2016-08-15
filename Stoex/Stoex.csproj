@@ -1,0 +1,157 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{BC0DB00E-A949-480F-9230-0767D1AEB827}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Stoex</RootNamespace>
+    <AssemblyName>Stoex</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="NMF.Collections, Version=1.0.45.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\NMF-Repository.1.0.45\lib\net40\NMF.Collections.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="NMF.Expressions, Version=1.0.45.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\NMF-Expressions.1.0.45\lib\net40\NMF.Expressions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="NMF.Expressions.Linq, Version=1.0.45.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\NMF-Expressions.1.0.45\lib\net40\NMF.Expressions.Linq.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="NMF.Models, Version=1.0.45.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\NMF-Repository.1.0.45\lib\net40\NMF.Models.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="NMF.Serialization, Version=1.0.45.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\NMF-Repository.1.0.45\lib\net40\NMF.Serialization.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="NMF.Utilities, Version=1.0.45.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\NMF-Utilities.1.0.45\lib\net40\NMF.Utilities.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ModelRegistration.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Stoex\AbstractNamedReference.cs" />
+    <Compile Include="Stoex\Atom.cs" />
+    <Compile Include="Stoex\BooleanExpression.cs" />
+    <Compile Include="Stoex\BooleanOperations.cs" />
+    <Compile Include="Stoex\BooleanOperatorExpression.cs" />
+    <Compile Include="Stoex\BoolLiteral.cs" />
+    <Compile Include="Stoex\CompareExpression.cs" />
+    <Compile Include="Stoex\CompareOperations.cs" />
+    <Compile Include="Stoex\Comparison.cs" />
+    <Compile Include="Stoex\DoubleLiteral.cs" />
+    <Compile Include="Stoex\Expression.cs" />
+    <Compile Include="Stoex\FunctionLiteral.cs" />
+    <Compile Include="Stoex\IAbstractNamedReference.cs" />
+    <Compile Include="Stoex\IAtom.cs" />
+    <Compile Include="Stoex\IBooleanExpression.cs" />
+    <Compile Include="Stoex\IBooleanOperatorExpression.cs" />
+    <Compile Include="Stoex\IBoolLiteral.cs" />
+    <Compile Include="Stoex\ICompareExpression.cs" />
+    <Compile Include="Stoex\IComparison.cs" />
+    <Compile Include="Stoex\IDoubleLiteral.cs" />
+    <Compile Include="Stoex\IExpression.cs" />
+    <Compile Include="Stoex\IfElse.cs" />
+    <Compile Include="Stoex\IfElseExpression.cs" />
+    <Compile Include="Stoex\IFunctionLiteral.cs" />
+    <Compile Include="Stoex\IIfElse.cs" />
+    <Compile Include="Stoex\IIfElseExpression.cs" />
+    <Compile Include="Stoex\IIntLiteral.cs" />
+    <Compile Include="Stoex\INamespaceReference.cs" />
+    <Compile Include="Stoex\INegativeExpression.cs" />
+    <Compile Include="Stoex\INotExpression.cs" />
+    <Compile Include="Stoex\IntLiteral.cs" />
+    <Compile Include="Stoex\INumericLiteral.cs" />
+    <Compile Include="Stoex\IParenthesis.cs" />
+    <Compile Include="Stoex\IPower.cs" />
+    <Compile Include="Stoex\IPowerExpression.cs" />
+    <Compile Include="Stoex\IProbabilityFunctionLiteral.cs" />
+    <Compile Include="Stoex\IProduct.cs" />
+    <Compile Include="Stoex\IProductExpression.cs" />
+    <Compile Include="Stoex\IRandomVariable.cs" />
+    <Compile Include="Stoex\IStringLiteral.cs" />
+    <Compile Include="Stoex\ITerm.cs" />
+    <Compile Include="Stoex\ITermExpression.cs" />
+    <Compile Include="Stoex\IUnary.cs" />
+    <Compile Include="Stoex\IVariable.cs" />
+    <Compile Include="Stoex\IVariableReference.cs" />
+    <Compile Include="Stoex\NamespaceReference.cs" />
+    <Compile Include="Stoex\NegativeExpression.cs" />
+    <Compile Include="Stoex\NotExpression.cs" />
+    <Compile Include="Stoex\NumericLiteral.cs" />
+    <Compile Include="Stoex\Parenthesis.cs" />
+    <Compile Include="Stoex\Power.cs" />
+    <Compile Include="Stoex\PowerExpression.cs" />
+    <Compile Include="Stoex\ProbabilityFunctionLiteral.cs" />
+    <Compile Include="Stoex\Product.cs" />
+    <Compile Include="Stoex\ProductExpression.cs" />
+    <Compile Include="Stoex\ProductOperations.cs" />
+    <Compile Include="Stoex\RandomVariable.cs" />
+    <Compile Include="Stoex\StringLiteral.cs" />
+    <Compile Include="Stoex\Term.cs" />
+    <Compile Include="Stoex\TermExpression.cs" />
+    <Compile Include="Stoex\TermOperations.cs" />
+    <Compile Include="Stoex\Unary.cs" />
+    <Compile Include="Stoex\Variable.cs" />
+    <Compile Include="Stoex\VariableReference.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="stoex.nmeta" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ProbabilityFunction\ProbabilityFunction.csproj">
+      <Project>{296b6983-30c8-4f69-bd33-c7767b5a6cb1}</Project>
+      <Name>ProbabilityFunction</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Units\Units.csproj">
+      <Project>{cd3526bd-1b6e-4a7c-a043-b92f31592fc6}</Project>
+      <Name>Units</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,107 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{1EC6FDE7-6528-4498-9ECF-9527A53A9B1E}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Transformation</RootNamespace>
+    <AssemblyName>Transformation</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="NMF.Collections, Version=1.0.42.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\NMF-Repository.1.0.45\lib\net40\NMF.Collections.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="NMF.Expressions, Version=1.0.45.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\NMF-Expressions.1.0.45\lib\net40\NMF.Expressions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="NMF.Expressions.Linq, Version=1.0.45.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\NMF-Expressions.1.0.45\lib\net40\NMF.Expressions.Linq.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="NMF.Models, Version=1.0.42.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\NMF-Repository.1.0.45\lib\net40\NMF.Models.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="NMF.Serialization, Version=1.0.42.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\NMF-Repository.1.0.45\lib\net40\NMF.Serialization.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="NMF.Transformations, Version=1.0.45.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\NMF-Transformations.1.0.45\lib\net40\NMF.Transformations.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="NMF.Transformations.Core, Version=1.0.45.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\NMF-Transformations.1.0.45\lib\net40\NMF.Transformations.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="NMF.Utilities, Version=1.0.45.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\NMF-Utilities.1.0.45\lib\net40\NMF.Utilities.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DeepPCM2PCMTransformation.cs" />
+    <Compile Include="Test.cs" />
+    <Compile Include="Transformation.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <EmbeddedResource Include="DeepPCM.nmeta" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Identifier\Identifier.csproj">
+      <Project>{39fd263d-1d23-4cb3-bd3f-32baf9662d49}</Project>
+      <Name>Identifier</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\test\dpcm.csproj">
+      <Project>{64b41b62-e62c-46c3-8856-3d3b655536f9}</Project>
+      <Name>dpcm</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

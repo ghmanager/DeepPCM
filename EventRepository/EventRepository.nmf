@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<repository:Repository xmi:version="2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Uri="http://github.com/ghmanager/EventRepo" Prefix="repo" Name="Repo" xmlns:xmi="http://www.omg.org/XMI" xmlns:repository="http://github.com/ghmanager/DeepPCM/Repository/1.0">
+  <components__Repository xsi:type="repository:BasicComponent" Name="Sender">
+    <serviceEffectSpecifications__BasicComponent xmlns:seff="http://github.com/ghmanager/DeepPCM/SEFF/1.0" xsi:type="seff:ResourceDemandingSEFF" id="SenderSEFF" describedService__SEFF="DoSth" xmi:id="$0">
+      <steps_Behaviour xsi:type="seff:StartAction" successor_AbstractAction="#action1//action1/" id="senderStartAction" />
+      <steps_Behaviour xsi:type="seff:StopAction" predecessor_AbstractAction="#emitEvent2//emitEvent2/" id="senderStopAction" />
+      <steps_Behaviour xsi:type="seff:EmitEventAction" eventType__EmitEventAction="//EventGroup//EventType1/" predecessor_AbstractAction="#action1//action1/" successor_AbstractAction="#emitEvent2//emitEvent2/" id="emitEvent">
+        <inputVariableUsages__CallAction xmi:id="$1">
+          <variableCharacterisation_VariableUsage type="VALUE" xmi:id="$2">
+            <specification_VariableCharacterisation specification="true" xmi:id="$3" />
+          </variableCharacterisation_VariableUsage>
+          <namedReference__VariableUsage xmlns:stoex="http://sdq.ipd.uka.de/StochasticExpressions/1.0" xsi:type="stoex:VariableReference" referenceName="event" xmi:id="$4" />
+        </inputVariableUsages__CallAction>
+      </steps_Behaviour>
+      <steps_Behaviour xsi:type="seff:InternalAction" predecessor_AbstractAction="#senderStartAction//senderStartAction/" successor_AbstractAction="#emitEvent//emitEvent/" id="action1">
+        <resourceDemand_Action xmi:id="$5">
+          <specification_ParametericResourceDemand specification="1" xmi:id="$6" />
+        </resourceDemand_Action>
+      </steps_Behaviour>
+      <steps_Behaviour xsi:type="seff:EmitEventAction" eventType__EmitEventAction="//EventGroupChannel//EventType2/" predecessor_AbstractAction="#emitEvent//emitEvent/" successor_AbstractAction="#senderStopAction//senderStopAction/" id="emitEvent2">
+        <inputVariableUsages__CallAction xmi:id="$7">
+          <variableCharacterisation_VariableUsage type="VALUE" xmi:id="$8">
+            <specification_VariableCharacterisation specification="BoolPMF[(true;0.5)(false;0.5)]" xmi:id="$9" />
+          </variableCharacterisation_VariableUsage>
+          <namedReference__VariableUsage xmlns:stoex="http://sdq.ipd.uka.de/StochasticExpressions/1.0" xsi:type="stoex:VariableReference" referenceName="event" xmi:id="$10" />
+        </inputVariableUsages__CallAction>
+      </steps_Behaviour>
+    </serviceEffectSpecifications__BasicComponent>
+    <ProvidedInterfaces xsi:type="repository:OperationInterface" Name="EventInterface" />
+    <ProvidedInterfaces xsi:type="repository:EventGroup" Name="EventGroup">
+      <eventTypes__EventGroup id="EventType1">
+        <parameter__EventType dataType__Parameter="$11" />
+      </eventTypes__EventGroup>
+    </ProvidedInterfaces>
+    <ProvidedInterfaces xsi:type="repository:EventGroup" Name="EventGroupChannel">
+      <eventTypes__EventGroup id="EventType2">
+        <parameter__EventType dataType__Parameter="$13" />
+      </eventTypes__EventGroup>
+    </ProvidedInterfaces>
+  </components__Repository>
+  <components__Repository xsi:type="repository:BasicComponent" Name="Receiver">
+    <serviceEffectSpecifications__BasicComponent xmlns:seff="http://github.com/ghmanager/DeepPCM/SEFF/1.0" xsi:type="seff:ResourceDemandingSEFF" id="BasicReceiverSeff" describedService__SEFF="//EventGroup//EventType1/" xmi:id="$15">
+      <steps_Behaviour xsi:type="seff:StartAction" successor_AbstractAction="#action2//action2/" id="basicReceiverStartAction" />
+      <steps_Behaviour xsi:type="seff:StopAction" predecessor_AbstractAction="#action2//action2/" id="basicReceiverStopAction" />
+      <steps_Behaviour xsi:type="seff:InternalAction" predecessor_AbstractAction="#basicReceiverStartAction//basicReceiverStartAction/" successor_AbstractAction="#basicReceiverStopAction//basicReceiverStopAction/" id="action2">
+        <resourceDemand_Action xmi:id="$16">
+          <specification_ParametericResourceDemand specification="event.VALUE ? 2 : 10" xmi:id="$17" />
+        </resourceDemand_Action>
+      </steps_Behaviour>
+    </serviceEffectSpecifications__BasicComponent>
+    <RequiredInterfaces xsi:type="repository:EventGroupSubscriber" EventGroup="//EventGroup/" Name="BasicSubscriber" />
+  </components__Repository>
+  <components__Repository xsi:type="repository:BasicComponent" Name="ChannelReceiver">
+    <serviceEffectSpecifications__BasicComponent xmlns:seff="http://github.com/ghmanager/DeepPCM/SEFF/1.0" xsi:type="seff:ResourceDemandingSEFF" id="ChannelReceiverSeff" describedService__SEFF="//EventGroupChannel//EventType2/" xmi:id="$18">
+      <steps_Behaviour xsi:type="seff:StartAction" successor_AbstractAction="#action3//action3/" id="channelReceiverStartAction" />
+      <steps_Behaviour xsi:type="seff:StopAction" predecessor_AbstractAction="#action3//action3/" id="channelReceiverStopAction" />
+      <steps_Behaviour xsi:type="seff:InternalAction" predecessor_AbstractAction="#channelReceiverStartAction//channelReceiverStartAction/" successor_AbstractAction="#channelReceiverStopAction//channelReceiverStopAction/" id="action3">
+        <resourceDemand_Action xmi:id="$19">
+          <specification_ParametericResourceDemand specification="1" xmi:id="$20" />
+        </resourceDemand_Action>
+      </steps_Behaviour>
+    </serviceEffectSpecifications__BasicComponent>
+    <RequiredInterfaces xsi:type="repository:EventGroupSubscriber" EventGroup="//EventGroupChannel/" Name="ChannelSubscriber" />
+  </components__Repository>
+  <interfaces__Repository xsi:type="repository:OperationInterface" Name="EventInterface" />
+  <interfaces__Repository xsi:type="repository:EventGroup" Name="EventGroup">
+    <eventTypes__EventGroup id="EventType1">
+      <parameter__EventType dataType__Parameter="$11" />
+    </eventTypes__EventGroup>
+  </interfaces__Repository>
+  <interfaces__Repository xsi:type="repository:EventGroup" Name="EventGroupChannel">
+    <eventTypes__EventGroup id="EventType2">
+      <parameter__EventType dataType__Parameter="$13" />
+    </eventTypes__EventGroup>
+  </interfaces__Repository>
+  <delegate__Repository xmlns:composition="http://github.com/ghmanager/DeepPCM/Core/Composition/1.0" xsi:type="composition:OperationDelegate" Name="delegateTest" />
+  <eventChannel__Repository eventGroup__EventChannel="//EventGroupChannel/" Name="Channel1" />
+  <SystemSpecifications id="System1" Name="System1" />
+</repository:Repository>
