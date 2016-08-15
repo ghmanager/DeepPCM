@@ -446,9 +446,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="..\..\pcm_metamodel\DeepPCM.nmeta">
-      <Link>DeepPCM.nmeta</Link>
-    </EmbeddedResource>
+    <EmbeddedResource Include="DeepPCM.nmeta" />
     <None Include="packages.config" />
     <None Include="ProbabilityFunction.nmeta" />
     <None Include="Properties\Settings.settings">
