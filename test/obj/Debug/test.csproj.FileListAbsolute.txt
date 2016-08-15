@@ -1,0 +1,2 @@
+C:\Users\MainUser\Studium\Semester6\Bachelorarbeit\svn\deepPCMCode\test\test\bin\Debug\test.exe.config
+C:\Users\MainUser\Studium\Semester6\Bachelorarbeit\svn\deepPCMCode\Deeppcm\test\bin\Debug\test.exe.config

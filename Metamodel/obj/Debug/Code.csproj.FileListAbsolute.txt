@@ -1,0 +1,11 @@
+C:\Users\MainUser\Studium\Semester6\Bachelorarbeit\svn\deepPCMCode\Metamodel\obj\Debug\Code.csprojResolveAssemblyReference.cache
+C:\Users\MainUser\Studium\Semester6\Bachelorarbeit\svn\deepPCMCode\Metamodel\bin\Debug\DeepPCM.dll
+C:\Users\MainUser\Studium\Semester6\Bachelorarbeit\svn\deepPCMCode\Metamodel\bin\Debug\DeepPCM.pdb
+C:\Users\MainUser\Studium\Semester6\Bachelorarbeit\svn\deepPCMCode\Metamodel\bin\Debug\NMF.Collections.dll
+C:\Users\MainUser\Studium\Semester6\Bachelorarbeit\svn\deepPCMCode\Metamodel\bin\Debug\NMF.Expressions.dll
+C:\Users\MainUser\Studium\Semester6\Bachelorarbeit\svn\deepPCMCode\Metamodel\bin\Debug\NMF.Expressions.Linq.dll
+C:\Users\MainUser\Studium\Semester6\Bachelorarbeit\svn\deepPCMCode\Metamodel\bin\Debug\NMF.Models.dll
+C:\Users\MainUser\Studium\Semester6\Bachelorarbeit\svn\deepPCMCode\Metamodel\bin\Debug\NMF.Serialization.dll
+C:\Users\MainUser\Studium\Semester6\Bachelorarbeit\svn\deepPCMCode\Metamodel\bin\Debug\NMF.Utilities.dll
+C:\Users\MainUser\Studium\Semester6\Bachelorarbeit\svn\deepPCMCode\Metamodel\obj\Debug\DeepPCM.dll
+C:\Users\MainUser\Studium\Semester6\Bachelorarbeit\svn\deepPCMCode\Metamodel\obj\Debug\DeepPCM.pdb
