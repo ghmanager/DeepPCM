@@ -11,8 +11,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MediaStoreDeploymentCreator
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MediaStoreRepositoryCreator", "MediaStoreRepositoryCreator\MediaStoreRepositoryCreator.csproj", "{F0BAAAB4-F06E-40EE-A627-9785FA51D141}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Code", "Metamodel\Code.csproj", "{12CE0ED1-31AB-4004-B985-3D019D955D80}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventAssemblyCreator", "EventAssemblyCreator\EventAssemblyCreator.csproj", "{EF293278-D4B1-4AD7-89AA-B3CA2C2FA2A5}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventRepositoryCreator", "EventRepositoryCreator\EventRepositoryCreator.csproj", "{50B2554A-5672-4C9C-AC44-C0E60AFE5983}"
@@ -57,10 +55,6 @@ Global
 		{F0BAAAB4-F06E-40EE-A627-9785FA51D141}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F0BAAAB4-F06E-40EE-A627-9785FA51D141}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F0BAAAB4-F06E-40EE-A627-9785FA51D141}.Release|Any CPU.Build.0 = Release|Any CPU
-		{12CE0ED1-31AB-4004-B985-3D019D955D80}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{12CE0ED1-31AB-4004-B985-3D019D955D80}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{12CE0ED1-31AB-4004-B985-3D019D955D80}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{12CE0ED1-31AB-4004-B985-3D019D955D80}.Release|Any CPU.Build.0 = Release|Any CPU
 		{EF293278-D4B1-4AD7-89AA-B3CA2C2FA2A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{EF293278-D4B1-4AD7-89AA-B3CA2C2FA2A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EF293278-D4B1-4AD7-89AA-B3CA2C2FA2A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
