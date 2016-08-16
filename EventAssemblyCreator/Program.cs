@@ -61,10 +61,11 @@ namespace EventAssemblyCreator
             system.AssemblyContexts__ComposedStructure.Add(channelReceiver2);
 
             normalReceiver.BasicSubscriber = sender;
-            var channel = new ExampleChannel();
+            var channel = new ExampleChannel() { Name = "Channel" };
             channel.EventPublisher.Add(sender);
             channel.EventSubscriber.Add(channelReceiver1);
             channel.EventSubscriber.Add(channelReceiver2);
+            system.EventChannelArchitecture__ComposedStructure.Add(channel);
             var mediaStoreL2 = new Namespace()
             {
                 Name = "Assembly",

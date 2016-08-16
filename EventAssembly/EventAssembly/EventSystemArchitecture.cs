@@ -63,6 +63,11 @@ namespace Metamodel.Assembly
         private IResourceContainer _channelReceiver2;
         
         /// <summary>
+        /// The backing field for the Channel property
+        /// </summary>
+        private IResourceContainer _channel;
+        
+        /// <summary>
         /// The backing field for the Environment property
         /// </summary>
         private IResourceEnvironment _environment;
@@ -281,6 +286,42 @@ namespace Metamodel.Assembly
                     }
                     this.OnChannelReceiver2Changed(e);
                     this.OnPropertyChanged("ChannelReceiver2", e);
+                }
+            }
+        }
+        
+        /// <summary>
+        /// The Channel property
+        /// </summary>
+        [XmlAttributeAttribute(false)]
+        [ContainmentAttribute()]
+        public virtual IResourceContainer Channel
+        {
+            get
+            {
+                return this._channel;
+            }
+            set
+            {
+                if ((this._channel != value))
+                {
+                    IResourceContainer old = this._channel;
+                    ValueChangedEventArgs e = new ValueChangedEventArgs(old, value);
+                    this.OnChannelChanging(e);
+                    this.OnPropertyChanging("Channel", e);
+                    this._channel = value;
+                    if ((old != null))
+                    {
+                        old.Parent = null;
+                        old.Deleted -= this.OnResetChannel;
+                    }
+                    if ((value != null))
+                    {
+                        value.Parent = this;
+                        value.Deleted += this.OnResetChannel;
+                    }
+                    this.OnChannelChanged(e);
+                    this.OnPropertyChanged("Channel", e);
                 }
             }
         }
@@ -531,6 +572,16 @@ namespace Metamodel.Assembly
         public event System.EventHandler<ValueChangedEventArgs> ChannelReceiver2Changed;
         
         /// <summary>
+        /// Gets fired before the Channel property changes its value
+        /// </summary>
+        public event System.EventHandler<ValueChangedEventArgs> ChannelChanging;
+        
+        /// <summary>
+        /// Gets fired when the Channel property changed its value
+        /// </summary>
+        public event System.EventHandler<ValueChangedEventArgs> ChannelChanged;
+        
+        /// <summary>
         /// Gets fired before the Environment property changes its value
         /// </summary>
         public event System.EventHandler<ValueChangedEventArgs> EnvironmentChanging;
@@ -695,6 +746,42 @@ namespace Metamodel.Assembly
         }
         
         /// <summary>
+        /// Raises the ChannelChanging event
+        /// </summary>
+        /// <param name="eventArgs">The event data</param>
+        protected virtual void OnChannelChanging(ValueChangedEventArgs eventArgs)
+        {
+            System.EventHandler<ValueChangedEventArgs> handler = this.ChannelChanging;
+            if ((handler != null))
+            {
+                handler.Invoke(this, eventArgs);
+            }
+        }
+        
+        /// <summary>
+        /// Raises the ChannelChanged event
+        /// </summary>
+        /// <param name="eventArgs">The event data</param>
+        protected virtual void OnChannelChanged(ValueChangedEventArgs eventArgs)
+        {
+            System.EventHandler<ValueChangedEventArgs> handler = this.ChannelChanged;
+            if ((handler != null))
+            {
+                handler.Invoke(this, eventArgs);
+            }
+        }
+        
+        /// <summary>
+        /// Handles the event that the Channel property must reset
+        /// </summary>
+        /// <param name="sender">The object that sent this reset request</param>
+        /// <param name="eventArgs">The event data for the reset event</param>
+        private void OnResetChannel(object sender, System.EventArgs eventArgs)
+        {
+            this.Channel = null;
+        }
+        
+        /// <summary>
         /// Raises the EnvironmentChanging event
         /// </summary>
         /// <param name="eventArgs">The event data</param>
@@ -799,6 +886,10 @@ namespace Metamodel.Assembly
             {
                 return ModelHelper.CreatePath("ChannelReceiver2");
             }
+            if ((element == this.Channel))
+            {
+                return ModelHelper.CreatePath("Channel");
+            }
             return base.GetRelativePathForNonIdentifiedChild(element);
         }
         
@@ -825,6 +916,10 @@ namespace Metamodel.Assembly
             if ((reference == "CHANNELRECEIVER2"))
             {
                 return this.ChannelReceiver2;
+            }
+            if ((reference == "CHANNEL"))
+            {
+                return this.Channel;
             }
             return base.GetModelElementForReference(reference, index);
         }
@@ -885,6 +980,11 @@ namespace Metamodel.Assembly
                 this.ChannelReceiver2 = ((IResourceContainer)(value));
                 return;
             }
+            if ((feature == "CHANNEL"))
+            {
+                this.Channel = ((IResourceContainer)(value));
+                return;
+            }
             if ((feature == "ENVIRONMENT"))
             {
                 this.Environment = ((IResourceEnvironment)(value));
@@ -921,6 +1021,10 @@ namespace Metamodel.Assembly
             {
                 return new ChannelReceiver2Proxy(this);
             }
+            if ((attribute == "CHANNEL"))
+            {
+                return new ChannelProxy(this);
+            }
             if ((attribute == "ENVIRONMENT"))
             {
                 return new EnvironmentProxy(this);
@@ -951,6 +1055,10 @@ namespace Metamodel.Assembly
             {
                 return new ChannelReceiver2Proxy(this);
             }
+            if ((reference == "CHANNEL"))
+            {
+                return new ChannelProxy(this);
+            }
             if ((reference == "ENVIRONMENT"))
             {
                 return new EnvironmentProxy(this);
@@ -961,7 +1069,7 @@ namespace Metamodel.Assembly
         /// <summary>
         /// Gets the Class for this model element
         /// </summary>
-        public override IClass GetClass()
+        public virtual IClass GetClass()
         {
             if ((_classInstance == null))
             {
@@ -1010,6 +1118,10 @@ namespace Metamodel.Assembly
                     {
                         count = (count + 1);
                     }
+                    if ((this._parent.Channel != null))
+                    {
+                        count = (count + 1);
+                    }
                     count = (count + this._parent.References.Count);
                     return count;
                 }
@@ -1021,6 +1133,7 @@ namespace Metamodel.Assembly
                 this._parent.ReceiverChanged += this.PropagateValueChanges;
                 this._parent.ChannelReceiverChanged += this.PropagateValueChanges;
                 this._parent.ChannelReceiver2Changed += this.PropagateValueChanges;
+                this._parent.ChannelChanged += this.PropagateValueChanges;
                 this._parent.References.AsNotifiable().CollectionChanged += this.PropagateCollectionChanges;
             }
             
@@ -1030,6 +1143,7 @@ namespace Metamodel.Assembly
                 this._parent.ReceiverChanged -= this.PropagateValueChanges;
                 this._parent.ChannelReceiverChanged -= this.PropagateValueChanges;
                 this._parent.ChannelReceiver2Changed -= this.PropagateValueChanges;
+                this._parent.ChannelChanged -= this.PropagateValueChanges;
                 this._parent.References.AsNotifiable().CollectionChanged -= this.PropagateCollectionChanges;
             }
             
@@ -1075,6 +1189,15 @@ namespace Metamodel.Assembly
                         return;
                     }
                 }
+                if ((this._parent.Channel == null))
+                {
+                    IResourceContainer channelCasted = item.As<IResourceContainer>();
+                    if ((channelCasted != null))
+                    {
+                        this._parent.Channel = channelCasted;
+                        return;
+                    }
+                }
                 IReference referencesCasted = item.As<IReference>();
                 if ((referencesCasted != null))
                 {
@@ -1091,6 +1214,7 @@ namespace Metamodel.Assembly
                 this._parent.Receiver = null;
                 this._parent.ChannelReceiver = null;
                 this._parent.ChannelReceiver2 = null;
+                this._parent.Channel = null;
                 this._parent.References.Clear();
             }
             
@@ -1114,6 +1238,10 @@ namespace Metamodel.Assembly
                     return true;
                 }
                 if ((item == this._parent.ChannelReceiver2))
+                {
+                    return true;
+                }
+                if ((item == this._parent.Channel))
                 {
                     return true;
                 }
@@ -1149,6 +1277,11 @@ namespace Metamodel.Assembly
                 if ((this._parent.ChannelReceiver2 != null))
                 {
                     array[arrayIndex] = this._parent.ChannelReceiver2;
+                    arrayIndex = (arrayIndex + 1);
+                }
+                if ((this._parent.Channel != null))
+                {
+                    array[arrayIndex] = this._parent.Channel;
                     arrayIndex = (arrayIndex + 1);
                 }
                 IEnumerator<IModelElement> referencesEnumerator = this._parent.References.GetEnumerator();
@@ -1195,6 +1328,11 @@ namespace Metamodel.Assembly
                     this._parent.ChannelReceiver2 = null;
                     return true;
                 }
+                if ((this._parent.Channel == item))
+                {
+                    this._parent.Channel = null;
+                    return true;
+                }
                 IReference referenceItem = item.As<IReference>();
                 if (((referenceItem != null) 
                             && this._parent.References.Remove(referenceItem)))
@@ -1210,7 +1348,7 @@ namespace Metamodel.Assembly
             /// <returns>A generic enumerator</returns>
             public override IEnumerator<IModelElement> GetEnumerator()
             {
-                return Enumerable.Empty<IModelElement>().Concat(this._parent.Sender).Concat(this._parent.Receiver).Concat(this._parent.ChannelReceiver).Concat(this._parent.ChannelReceiver2).Concat(this._parent.References).GetEnumerator();
+                return Enumerable.Empty<IModelElement>().Concat(this._parent.Sender).Concat(this._parent.Receiver).Concat(this._parent.ChannelReceiver).Concat(this._parent.ChannelReceiver2).Concat(this._parent.Channel).Concat(this._parent.References).GetEnumerator();
             }
         }
         
@@ -1254,6 +1392,10 @@ namespace Metamodel.Assembly
                     {
                         count = (count + 1);
                     }
+                    if ((this._parent.Channel != null))
+                    {
+                        count = (count + 1);
+                    }
                     if ((this._parent.Environment != null))
                     {
                         count = (count + 1);
@@ -1269,6 +1411,7 @@ namespace Metamodel.Assembly
                 this._parent.ReceiverChanged += this.PropagateValueChanges;
                 this._parent.ChannelReceiverChanged += this.PropagateValueChanges;
                 this._parent.ChannelReceiver2Changed += this.PropagateValueChanges;
+                this._parent.ChannelChanged += this.PropagateValueChanges;
                 this._parent.EnvironmentChanged += this.PropagateValueChanges;
                 this._parent.References.AsNotifiable().CollectionChanged += this.PropagateCollectionChanges;
             }
@@ -1279,6 +1422,7 @@ namespace Metamodel.Assembly
                 this._parent.ReceiverChanged -= this.PropagateValueChanges;
                 this._parent.ChannelReceiverChanged -= this.PropagateValueChanges;
                 this._parent.ChannelReceiver2Changed -= this.PropagateValueChanges;
+                this._parent.ChannelChanged -= this.PropagateValueChanges;
                 this._parent.EnvironmentChanged -= this.PropagateValueChanges;
                 this._parent.References.AsNotifiable().CollectionChanged -= this.PropagateCollectionChanges;
             }
@@ -1325,6 +1469,15 @@ namespace Metamodel.Assembly
                         return;
                     }
                 }
+                if ((this._parent.Channel == null))
+                {
+                    IResourceContainer channelCasted = item.As<IResourceContainer>();
+                    if ((channelCasted != null))
+                    {
+                        this._parent.Channel = channelCasted;
+                        return;
+                    }
+                }
                 if ((this._parent.Environment == null))
                 {
                     IResourceEnvironment environmentCasted = item.As<IResourceEnvironment>();
@@ -1350,6 +1503,7 @@ namespace Metamodel.Assembly
                 this._parent.Receiver = null;
                 this._parent.ChannelReceiver = null;
                 this._parent.ChannelReceiver2 = null;
+                this._parent.Channel = null;
                 this._parent.Environment = null;
                 this._parent.References.Clear();
             }
@@ -1374,6 +1528,10 @@ namespace Metamodel.Assembly
                     return true;
                 }
                 if ((item == this._parent.ChannelReceiver2))
+                {
+                    return true;
+                }
+                if ((item == this._parent.Channel))
                 {
                     return true;
                 }
@@ -1413,6 +1571,11 @@ namespace Metamodel.Assembly
                 if ((this._parent.ChannelReceiver2 != null))
                 {
                     array[arrayIndex] = this._parent.ChannelReceiver2;
+                    arrayIndex = (arrayIndex + 1);
+                }
+                if ((this._parent.Channel != null))
+                {
+                    array[arrayIndex] = this._parent.Channel;
                     arrayIndex = (arrayIndex + 1);
                 }
                 if ((this._parent.Environment != null))
@@ -1464,6 +1627,11 @@ namespace Metamodel.Assembly
                     this._parent.ChannelReceiver2 = null;
                     return true;
                 }
+                if ((this._parent.Channel == item))
+                {
+                    this._parent.Channel = null;
+                    return true;
+                }
                 if ((this._parent.Environment == item))
                 {
                     this._parent.Environment = null;
@@ -1484,7 +1652,7 @@ namespace Metamodel.Assembly
             /// <returns>A generic enumerator</returns>
             public override IEnumerator<IModelElement> GetEnumerator()
             {
-                return Enumerable.Empty<IModelElement>().Concat(this._parent.Sender).Concat(this._parent.Receiver).Concat(this._parent.ChannelReceiver).Concat(this._parent.ChannelReceiver2).Concat(this._parent.Environment).Concat(this._parent.References).GetEnumerator();
+                return Enumerable.Empty<IModelElement>().Concat(this._parent.Sender).Concat(this._parent.Receiver).Concat(this._parent.ChannelReceiver).Concat(this._parent.ChannelReceiver2).Concat(this._parent.Channel).Concat(this._parent.Environment).Concat(this._parent.References).GetEnumerator();
             }
         }
         
@@ -1681,6 +1849,55 @@ namespace Metamodel.Assembly
             protected override void UnregisterChangeEventHandler(System.EventHandler<NMF.Expressions.ValueChangedEventArgs> handler)
             {
                 this.ModelElement.ChannelReceiver2Changed -= handler;
+            }
+        }
+        
+        /// <summary>
+        /// Represents a proxy to represent an incremental access to the Channel property
+        /// </summary>
+        private sealed class ChannelProxy : ModelPropertyChange<IEventSystemArchitecture, IResourceContainer>
+        {
+            
+            /// <summary>
+            /// Creates a new observable property access proxy
+            /// </summary>
+            /// <param name="modelElement">The model instance element for which to create the property access proxy</param>
+            public ChannelProxy(IEventSystemArchitecture modelElement) : 
+                    base(modelElement)
+            {
+            }
+            
+            /// <summary>
+            /// Gets or sets the value of this expression
+            /// </summary>
+            public override IResourceContainer Value
+            {
+                get
+                {
+                    return this.ModelElement.Channel;
+                }
+                set
+                {
+                    this.ModelElement.Channel = value;
+                }
+            }
+            
+            /// <summary>
+            /// Registers an event handler to subscribe specifically on the changed event for this property
+            /// </summary>
+            /// <param name="handler">The handler that should be subscribed to the property change event</param>
+            protected override void RegisterChangeEventHandler(System.EventHandler<NMF.Expressions.ValueChangedEventArgs> handler)
+            {
+                this.ModelElement.ChannelChanged += handler;
+            }
+            
+            /// <summary>
+            /// Registers an event handler to subscribe specifically on the changed event for this property
+            /// </summary>
+            /// <param name="handler">The handler that should be unsubscribed from the property change event</param>
+            protected override void UnregisterChangeEventHandler(System.EventHandler<NMF.Expressions.ValueChangedEventArgs> handler)
+            {
+                this.ModelElement.ChannelChanged -= handler;
             }
         }
         

@@ -45,7 +45,7 @@ namespace Metamodel.DeepPCM.Core.Composition
     [ModelRepresentationClassAttribute("http://github.com/ghmanager/DeepPCM/1.0#//core//composition//EventChannelArchitec" +
         "ture/")]
     [DebuggerDisplayAttribute("EventChannelArchitecture {Name}")]
-    public abstract class EventChannelArchitecture : Class, IEventChannelArchitecture, IModelElement
+    public abstract class EventChannelArchitecture : MetaElement, IEventChannelArchitecture, IModelElement
     {
         
         /// <summary>
@@ -58,6 +58,19 @@ namespace Metamodel.DeepPCM.Core.Composition
         /// </summary>
         private ObservableAssociationList<IEventPublisher> _eventPublisher;
         
+        private static IReferenceType _ReferenceType = NMF.Models.Repository.MetaRepository.Instance.Resolve("http://github.com/ghmanager/DeepPCM/1.0#//resourceenvironment//ResourceContainer/" +
+                "").As<IReferenceType>();
+        
+        /// <summary>
+        /// The backing field for the Opposite property
+        /// </summary>
+        private IReference _opposite;
+        
+        /// <summary>
+        /// The backing field for the Anchor property
+        /// </summary>
+        private IClass _anchor;
+        
         /// <summary>
         /// The backing field for the Id property
         /// </summary>
@@ -69,6 +82,159 @@ namespace Metamodel.DeepPCM.Core.Composition
         private string _entityName = "aName";
         
         private static IClass _classInstance;
+        
+        event EventHandler<ValueChangedEventArgs> IReference.RefinesChanged
+        {
+            add
+            {
+            }
+            remove
+            {
+            }
+        }
+        event EventHandler<ValueChangedEventArgs> IReference.RefinesChanging
+        {
+            add
+            {
+            }
+            remove
+            {
+            }
+        }
+        event EventHandler<ValueChangedEventArgs> IReference.ReferenceTypeChanged
+        {
+            add
+            {
+            }
+            remove
+            {
+            }
+        }
+        event EventHandler<ValueChangedEventArgs> IReference.ReferenceTypeChanging
+        {
+            add
+            {
+            }
+            remove
+            {
+            }
+        }
+        event EventHandler<ValueChangedEventArgs> ITypedElement.LowerBoundChanged
+        {
+            add
+            {
+            }
+            remove
+            {
+            }
+        }
+        event EventHandler<ValueChangedEventArgs> ITypedElement.LowerBoundChanging
+        {
+            add
+            {
+            }
+            remove
+            {
+            }
+        }
+        event EventHandler<ValueChangedEventArgs> ITypedElement.UpperBoundChanged
+        {
+            add
+            {
+            }
+            remove
+            {
+            }
+        }
+        event EventHandler<ValueChangedEventArgs> ITypedElement.UpperBoundChanging
+        {
+            add
+            {
+            }
+            remove
+            {
+            }
+        }
+        event EventHandler<ValueChangedEventArgs> IReference.IsContainmentChanged
+        {
+            add
+            {
+            }
+            remove
+            {
+            }
+        }
+        event EventHandler<ValueChangedEventArgs> IReference.IsContainmentChanging
+        {
+            add
+            {
+            }
+            remove
+            {
+            }
+        }
+        event EventHandler<ValueChangedEventArgs> ITypedElement.IsOrderedChanged
+        {
+            add
+            {
+            }
+            remove
+            {
+            }
+        }
+        event EventHandler<ValueChangedEventArgs> ITypedElement.IsOrderedChanging
+        {
+            add
+            {
+            }
+            remove
+            {
+            }
+        }
+        event EventHandler<ValueChangedEventArgs> ITypedElement.IsUniqueChanged
+        {
+            add
+            {
+            }
+            remove
+            {
+            }
+        }
+        event EventHandler<ValueChangedEventArgs> ITypedElement.IsUniqueChanging
+        {
+            add
+            {
+            }
+            remove
+            {
+            }
+        }
+        event EventHandler<ValueChangedEventArgs> ITypedElement.TypeChanged
+        {
+            add
+            {
+                IReference _this_Reference = this;
+                _this_Reference.ReferenceTypeChanged += value;
+            }
+            remove
+            {
+                IReference _this_Reference = this;
+                _this_Reference.ReferenceTypeChanged -= value;
+            }
+        }
+        event EventHandler<ValueChangedEventArgs> ITypedElement.TypeChanging
+        {
+            add
+            {
+                IReference _this_Reference = this;
+                _this_Reference.ReferenceTypeChanging += value;
+            }
+            remove
+            {
+                IReference _this_Reference = this;
+                _this_Reference.ReferenceTypeChanging -= value;
+            }
+        }
         
         public EventChannelArchitecture()
         {
@@ -124,6 +290,230 @@ namespace Metamodel.DeepPCM.Core.Composition
             get
             {
                 return this._eventPublisher;
+            }
+        }
+        
+        IReference IReference.Refines
+        {
+            get
+            {
+                return null;
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    throw new System.NotSupportedException();
+                }
+            }
+        }
+        
+        IReferenceType IReference.ReferenceType
+        {
+            get
+            {
+                return _ReferenceType;
+            }
+            set
+            {
+                if ((value != _ReferenceType))
+                {
+                    throw new System.NotSupportedException();
+                }
+            }
+        }
+        
+        int ITypedElement.LowerBound
+        {
+            get
+            {
+                return 1;
+            }
+            set
+            {
+                if ((value != 1))
+                {
+                    throw new System.NotSupportedException();
+                }
+            }
+        }
+        
+        int ITypedElement.UpperBound
+        {
+            get
+            {
+                return 1;
+            }
+            set
+            {
+                if ((value != 1))
+                {
+                    throw new System.NotSupportedException();
+                }
+            }
+        }
+        
+        bool IReference.IsContainment
+        {
+            get
+            {
+                return true;
+            }
+            set
+            {
+                if ((value != true))
+                {
+                    throw new System.NotSupportedException();
+                }
+            }
+        }
+        
+        bool ITypedElement.IsOrdered
+        {
+            get
+            {
+                return false;
+            }
+            set
+            {
+                if ((value != false))
+                {
+                    throw new System.NotSupportedException();
+                }
+            }
+        }
+        
+        bool ITypedElement.IsUnique
+        {
+            get
+            {
+                return false;
+            }
+            set
+            {
+                if ((value != false))
+                {
+                    throw new System.NotSupportedException();
+                }
+            }
+        }
+        
+        /// <summary>
+        /// The DeclaringType property
+        /// </summary>
+        [DesignerSerializationVisibilityAttribute(DesignerSerializationVisibility.Hidden)]
+        [XmlAttributeAttribute(true)]
+        [XmlOppositeAttribute("References")]
+        public virtual IReferenceType DeclaringType
+        {
+            get
+            {
+                return ModelHelper.CastAs<IReferenceType>(this.Parent);
+            }
+            set
+            {
+                this.Parent = value;
+            }
+        }
+        
+        /// <summary>
+        /// The Opposite property
+        /// </summary>
+        [XmlAttributeAttribute(true)]
+        [XmlOppositeAttribute("Opposite")]
+        public virtual IReference Opposite
+        {
+            get
+            {
+                return this._opposite;
+            }
+            set
+            {
+                if ((this._opposite != value))
+                {
+                    IReference old = this._opposite;
+                    ValueChangedEventArgs e = new ValueChangedEventArgs(old, value);
+                    this.OnOppositeChanging(e);
+                    this.OnPropertyChanging("Opposite", e);
+                    this._opposite = value;
+                    if ((old != null))
+                    {
+                        old.Opposite = null;
+                        old.Deleted -= this.OnResetOpposite;
+                    }
+                    if ((value != null))
+                    {
+                        value.Opposite = this;
+                        value.Deleted += this.OnResetOpposite;
+                    }
+                    this.OnOppositeChanged(e);
+                    this.OnPropertyChanged("Opposite", e);
+                }
+            }
+        }
+        
+        /// <summary>
+        /// The least common anchestor of an instance and its referenced element, if statically known
+        /// </summary>
+        [XmlAttributeAttribute(true)]
+        public virtual IClass Anchor
+        {
+            get
+            {
+                return this._anchor;
+            }
+            set
+            {
+                if ((this._anchor != value))
+                {
+                    IClass old = this._anchor;
+                    ValueChangedEventArgs e = new ValueChangedEventArgs(old, value);
+                    this.OnAnchorChanging(e);
+                    this.OnPropertyChanging("Anchor", e);
+                    this._anchor = value;
+                    if ((old != null))
+                    {
+                        old.Deleted -= this.OnResetAnchor;
+                    }
+                    if ((value != null))
+                    {
+                        value.Deleted += this.OnResetAnchor;
+                    }
+                    this.OnAnchorChanged(e);
+                    this.OnPropertyChanged("Anchor", e);
+                }
+            }
+        }
+        
+        IType ITypedElement.Type
+        {
+            get
+            {
+                IReference _this = this;
+                if ((_this.ReferenceType != null))
+                {
+                    return _this.ReferenceType;
+                }
+                return null;
+            }
+            set
+            {
+                IReference _this = this;
+                if ((value != null))
+                {
+                    IReferenceType @__ReferenceType = value.As<IReferenceType>();
+                    if ((@__ReferenceType != null))
+                    {
+                        _this.ReferenceType = @__ReferenceType;
+                        return;
+                    }
+                }
+                else
+                {
+                    _this.ReferenceType = null;
+                    return;
+                }
+                throw new System.ArgumentException("There was no suitable refining reference found for this object");
             }
         }
         
@@ -219,6 +609,36 @@ namespace Metamodel.DeepPCM.Core.Composition
         public event System.EventHandler<ValueChangedEventArgs> ParentStructure__eventChannelArchitectureChanged;
         
         /// <summary>
+        /// Gets fired before the DeclaringType property changes its value
+        /// </summary>
+        public event System.EventHandler<ValueChangedEventArgs> DeclaringTypeChanging;
+        
+        /// <summary>
+        /// Gets fired when the DeclaringType property changed its value
+        /// </summary>
+        public event System.EventHandler<ValueChangedEventArgs> DeclaringTypeChanged;
+        
+        /// <summary>
+        /// Gets fired before the Opposite property changes its value
+        /// </summary>
+        public event System.EventHandler<ValueChangedEventArgs> OppositeChanging;
+        
+        /// <summary>
+        /// Gets fired when the Opposite property changed its value
+        /// </summary>
+        public event System.EventHandler<ValueChangedEventArgs> OppositeChanged;
+        
+        /// <summary>
+        /// Gets fired before the Anchor property changes its value
+        /// </summary>
+        public event System.EventHandler<ValueChangedEventArgs> AnchorChanging;
+        
+        /// <summary>
+        /// Gets fired when the Anchor property changed its value
+        /// </summary>
+        public event System.EventHandler<ValueChangedEventArgs> AnchorChanged;
+        
+        /// <summary>
         /// Gets fired before the Id property changes its value
         /// </summary>
         public event System.EventHandler<ValueChangedEventArgs> IdChanging;
@@ -257,20 +677,6 @@ namespace Metamodel.DeepPCM.Core.Composition
         }
         
         /// <summary>
-        /// Gets called when the parent model element of the current model element is about to change
-        /// </summary>
-        /// <param name="oldParent">The old parent model element</param>
-        /// <param name="newParent">The new parent model element</param>
-        protected override void OnParentChanging(IModelElement newParent, IModelElement oldParent)
-        {
-            IComposedStructure oldParentStructure__eventChannelArchitecture = ModelHelper.CastAs<IComposedStructure>(oldParent);
-            IComposedStructure newParentStructure__eventChannelArchitecture = ModelHelper.CastAs<IComposedStructure>(newParent);
-            ValueChangedEventArgs e = new ValueChangedEventArgs(oldParentStructure__eventChannelArchitecture, newParentStructure__eventChannelArchitecture);
-            this.OnParentStructure__eventChannelArchitectureChanging(e);
-            this.OnPropertyChanging("ParentStructure__eventChannelArchitecture");
-        }
-        
-        /// <summary>
         /// Raises the ParentStructure__eventChannelArchitectureChanged event
         /// </summary>
         /// <param name="eventArgs">The event data</param>
@@ -281,29 +687,6 @@ namespace Metamodel.DeepPCM.Core.Composition
             {
                 handler.Invoke(this, eventArgs);
             }
-        }
-        
-        /// <summary>
-        /// Gets called when the parent model element of the current model element changes
-        /// </summary>
-        /// <param name="oldParent">The old parent model element</param>
-        /// <param name="newParent">The new parent model element</param>
-        protected override void OnParentChanged(IModelElement newParent, IModelElement oldParent)
-        {
-            IComposedStructure oldParentStructure__eventChannelArchitecture = ModelHelper.CastAs<IComposedStructure>(oldParent);
-            IComposedStructure newParentStructure__eventChannelArchitecture = ModelHelper.CastAs<IComposedStructure>(newParent);
-            if ((oldParentStructure__eventChannelArchitecture != null))
-            {
-                oldParentStructure__eventChannelArchitecture.EventChannelArchitecture__ComposedStructure.Remove(this);
-            }
-            if ((newParentStructure__eventChannelArchitecture != null))
-            {
-                newParentStructure__eventChannelArchitecture.EventChannelArchitecture__ComposedStructure.Add(this);
-            }
-            ValueChangedEventArgs e = new ValueChangedEventArgs(oldParentStructure__eventChannelArchitecture, newParentStructure__eventChannelArchitecture);
-            this.OnParentStructure__eventChannelArchitectureChanged(e);
-            this.OnPropertyChanged("ParentStructure__eventChannelArchitecture", e);
-            base.OnParentChanged(newParent, oldParent);
         }
         
         /// <summary>
@@ -344,6 +727,147 @@ namespace Metamodel.DeepPCM.Core.Composition
         private void EventPublisherCollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
         {
             this.OnCollectionChanged("EventPublisher", e);
+        }
+        
+        /// <summary>
+        /// Raises the DeclaringTypeChanging event
+        /// </summary>
+        /// <param name="eventArgs">The event data</param>
+        protected virtual void OnDeclaringTypeChanging(ValueChangedEventArgs eventArgs)
+        {
+            System.EventHandler<ValueChangedEventArgs> handler = this.DeclaringTypeChanging;
+            if ((handler != null))
+            {
+                handler.Invoke(this, eventArgs);
+            }
+        }
+        
+        protected override void OnParentChanging(IModelElement newParent, IModelElement oldParent)
+        {
+            IComposedStructure oldParentStructure__eventChannelArchitecture = ModelHelper.CastAs<IComposedStructure>(oldParent);
+            IComposedStructure newParentStructure__eventChannelArchitecture = ModelHelper.CastAs<IComposedStructure>(newParent);
+            ValueChangedEventArgs e = new ValueChangedEventArgs(oldParentStructure__eventChannelArchitecture, newParentStructure__eventChannelArchitecture);
+            this.OnParentStructure__eventChannelArchitectureChanging(e);
+            this.OnPropertyChanging("ParentStructure__eventChannelArchitecture");
+            IReferenceType oldDeclaringType = ModelHelper.CastAs<IReferenceType>(oldParent);
+            IReferenceType newDeclaringType = ModelHelper.CastAs<IReferenceType>(newParent);
+            this.OnDeclaringTypeChanging(e);
+            this.OnPropertyChanging("DeclaringType");
+        }
+        
+        /// <summary>
+        /// Raises the DeclaringTypeChanged event
+        /// </summary>
+        /// <param name="eventArgs">The event data</param>
+        protected virtual void OnDeclaringTypeChanged(ValueChangedEventArgs eventArgs)
+        {
+            System.EventHandler<ValueChangedEventArgs> handler = this.DeclaringTypeChanged;
+            if ((handler != null))
+            {
+                handler.Invoke(this, eventArgs);
+            }
+        }
+        
+        protected override void OnParentChanged(IModelElement newParent, IModelElement oldParent)
+        {
+            IComposedStructure oldParentStructure__eventChannelArchitecture = ModelHelper.CastAs<IComposedStructure>(oldParent);
+            IComposedStructure newParentStructure__eventChannelArchitecture = ModelHelper.CastAs<IComposedStructure>(newParent);
+            if ((oldParentStructure__eventChannelArchitecture != null))
+            {
+                oldParentStructure__eventChannelArchitecture.EventChannelArchitecture__ComposedStructure.Remove(this);
+            }
+            if ((newParentStructure__eventChannelArchitecture != null))
+            {
+                newParentStructure__eventChannelArchitecture.EventChannelArchitecture__ComposedStructure.Add(this);
+            }
+            ValueChangedEventArgs e = new ValueChangedEventArgs(oldParentStructure__eventChannelArchitecture, newParentStructure__eventChannelArchitecture);
+            this.OnParentStructure__eventChannelArchitectureChanged(e);
+            this.OnPropertyChanged("ParentStructure__eventChannelArchitecture", e);
+            IReferenceType oldDeclaringType = ModelHelper.CastAs<IReferenceType>(oldParent);
+            IReferenceType newDeclaringType = ModelHelper.CastAs<IReferenceType>(newParent);
+            if ((oldDeclaringType != null))
+            {
+                oldDeclaringType.References.Remove(this);
+            }
+            if ((newDeclaringType != null))
+            {
+                newDeclaringType.References.Add(this);
+            }
+            this.OnDeclaringTypeChanged(e);
+            this.OnPropertyChanged("DeclaringType", e);
+            base.OnParentChanged(newParent, oldParent);
+        }
+        
+        /// <summary>
+        /// Raises the OppositeChanging event
+        /// </summary>
+        /// <param name="eventArgs">The event data</param>
+        protected virtual void OnOppositeChanging(ValueChangedEventArgs eventArgs)
+        {
+            System.EventHandler<ValueChangedEventArgs> handler = this.OppositeChanging;
+            if ((handler != null))
+            {
+                handler.Invoke(this, eventArgs);
+            }
+        }
+        
+        /// <summary>
+        /// Raises the OppositeChanged event
+        /// </summary>
+        /// <param name="eventArgs">The event data</param>
+        protected virtual void OnOppositeChanged(ValueChangedEventArgs eventArgs)
+        {
+            System.EventHandler<ValueChangedEventArgs> handler = this.OppositeChanged;
+            if ((handler != null))
+            {
+                handler.Invoke(this, eventArgs);
+            }
+        }
+        
+        /// <summary>
+        /// Handles the event that the Opposite property must reset
+        /// </summary>
+        /// <param name="sender">The object that sent this reset request</param>
+        /// <param name="eventArgs">The event data for the reset event</param>
+        private void OnResetOpposite(object sender, System.EventArgs eventArgs)
+        {
+            this.Opposite = null;
+        }
+        
+        /// <summary>
+        /// Raises the AnchorChanging event
+        /// </summary>
+        /// <param name="eventArgs">The event data</param>
+        protected virtual void OnAnchorChanging(ValueChangedEventArgs eventArgs)
+        {
+            System.EventHandler<ValueChangedEventArgs> handler = this.AnchorChanging;
+            if ((handler != null))
+            {
+                handler.Invoke(this, eventArgs);
+            }
+        }
+        
+        /// <summary>
+        /// Raises the AnchorChanged event
+        /// </summary>
+        /// <param name="eventArgs">The event data</param>
+        protected virtual void OnAnchorChanged(ValueChangedEventArgs eventArgs)
+        {
+            System.EventHandler<ValueChangedEventArgs> handler = this.AnchorChanged;
+            if ((handler != null))
+            {
+                handler.Invoke(this, eventArgs);
+            }
+        }
+        
+        /// <summary>
+        /// Handles the event that the Anchor property must reset
+        /// </summary>
+        /// <param name="sender">The object that sent this reset request</param>
+        /// <param name="eventArgs">The event data for the reset event</param>
+        private void OnResetAnchor(object sender, System.EventArgs eventArgs)
+        {
+            this.Anchor = null;
         }
         
         /// <summary>
@@ -447,6 +971,21 @@ namespace Metamodel.DeepPCM.Core.Composition
                 this.ParentStructure__eventChannelArchitecture = ((IComposedStructure)(value));
                 return;
             }
+            if ((feature == "DECLARINGTYPE"))
+            {
+                this.DeclaringType = ((IReferenceType)(value));
+                return;
+            }
+            if ((feature == "OPPOSITE"))
+            {
+                this.Opposite = ((IReference)(value));
+                return;
+            }
+            if ((feature == "ANCHOR"))
+            {
+                this.Anchor = ((IClass)(value));
+                return;
+            }
             if ((feature == "ID"))
             {
                 this.Id = ((string)(value));
@@ -471,6 +1010,18 @@ namespace Metamodel.DeepPCM.Core.Composition
             {
                 return new ParentStructure__eventChannelArchitectureProxy(this);
             }
+            if ((attribute == "DECLARINGTYPE"))
+            {
+                return new DeclaringTypeProxy(this);
+            }
+            if ((attribute == "OPPOSITE"))
+            {
+                return new OppositeProxy(this);
+            }
+            if ((attribute == "ANCHOR"))
+            {
+                return new AnchorProxy(this);
+            }
             return base.GetExpressionForAttribute(attribute);
         }
         
@@ -484,6 +1035,18 @@ namespace Metamodel.DeepPCM.Core.Composition
             if ((reference == "PARENTSTRUCTURE__EVENTCHANNELARCHITECTURE"))
             {
                 return new ParentStructure__eventChannelArchitectureProxy(this);
+            }
+            if ((reference == "DECLARINGTYPE"))
+            {
+                return new DeclaringTypeProxy(this);
+            }
+            if ((reference == "OPPOSITE"))
+            {
+                return new OppositeProxy(this);
+            }
+            if ((reference == "ANCHOR"))
+            {
+                return new AnchorProxy(this);
             }
             return base.GetExpressionForReference(reference);
         }
@@ -531,6 +1094,18 @@ namespace Metamodel.DeepPCM.Core.Composition
                     }
                     count = (count + this._parent.EventSubscriber.Count);
                     count = (count + this._parent.EventPublisher.Count);
+                    if ((this._parent.DeclaringType != null))
+                    {
+                        count = (count + 1);
+                    }
+                    if ((this._parent.Opposite != null))
+                    {
+                        count = (count + 1);
+                    }
+                    if ((this._parent.Anchor != null))
+                    {
+                        count = (count + 1);
+                    }
                     return count;
                 }
             }
@@ -540,6 +1115,9 @@ namespace Metamodel.DeepPCM.Core.Composition
                 this._parent.ParentStructure__eventChannelArchitectureChanged += this.PropagateValueChanges;
                 this._parent.EventSubscriber.AsNotifiable().CollectionChanged += this.PropagateCollectionChanges;
                 this._parent.EventPublisher.AsNotifiable().CollectionChanged += this.PropagateCollectionChanges;
+                this._parent.DeclaringTypeChanged += this.PropagateValueChanges;
+                this._parent.OppositeChanged += this.PropagateValueChanges;
+                this._parent.AnchorChanged += this.PropagateValueChanges;
             }
             
             protected override void DetachCore()
@@ -547,6 +1125,9 @@ namespace Metamodel.DeepPCM.Core.Composition
                 this._parent.ParentStructure__eventChannelArchitectureChanged -= this.PropagateValueChanges;
                 this._parent.EventSubscriber.AsNotifiable().CollectionChanged -= this.PropagateCollectionChanges;
                 this._parent.EventPublisher.AsNotifiable().CollectionChanged -= this.PropagateCollectionChanges;
+                this._parent.DeclaringTypeChanged -= this.PropagateValueChanges;
+                this._parent.OppositeChanged -= this.PropagateValueChanges;
+                this._parent.AnchorChanged -= this.PropagateValueChanges;
             }
             
             /// <summary>
@@ -574,6 +1155,33 @@ namespace Metamodel.DeepPCM.Core.Composition
                 {
                     this._parent.EventPublisher.Add(eventPublisherCasted);
                 }
+                if ((this._parent.DeclaringType == null))
+                {
+                    IReferenceType declaringTypeCasted = item.As<IReferenceType>();
+                    if ((declaringTypeCasted != null))
+                    {
+                        this._parent.DeclaringType = declaringTypeCasted;
+                        return;
+                    }
+                }
+                if ((this._parent.Opposite == null))
+                {
+                    IReference oppositeCasted = item.As<IReference>();
+                    if ((oppositeCasted != null))
+                    {
+                        this._parent.Opposite = oppositeCasted;
+                        return;
+                    }
+                }
+                if ((this._parent.Anchor == null))
+                {
+                    IClass anchorCasted = item.As<IClass>();
+                    if ((anchorCasted != null))
+                    {
+                        this._parent.Anchor = anchorCasted;
+                        return;
+                    }
+                }
             }
             
             /// <summary>
@@ -584,6 +1192,9 @@ namespace Metamodel.DeepPCM.Core.Composition
                 this._parent.ParentStructure__eventChannelArchitecture = null;
                 this._parent.EventSubscriber.Clear();
                 this._parent.EventPublisher.Clear();
+                this._parent.DeclaringType = null;
+                this._parent.Opposite = null;
+                this._parent.Anchor = null;
             }
             
             /// <summary>
@@ -602,6 +1213,18 @@ namespace Metamodel.DeepPCM.Core.Composition
                     return true;
                 }
                 if (this._parent.EventPublisher.Contains(item))
+                {
+                    return true;
+                }
+                if ((item == this._parent.DeclaringType))
+                {
+                    return true;
+                }
+                if ((item == this._parent.Opposite))
+                {
+                    return true;
+                }
+                if ((item == this._parent.Anchor))
                 {
                     return true;
                 }
@@ -650,6 +1273,21 @@ namespace Metamodel.DeepPCM.Core.Composition
                 {
                     eventPublisherEnumerator.Dispose();
                 }
+                if ((this._parent.DeclaringType != null))
+                {
+                    array[arrayIndex] = this._parent.DeclaringType;
+                    arrayIndex = (arrayIndex + 1);
+                }
+                if ((this._parent.Opposite != null))
+                {
+                    array[arrayIndex] = this._parent.Opposite;
+                    arrayIndex = (arrayIndex + 1);
+                }
+                if ((this._parent.Anchor != null))
+                {
+                    array[arrayIndex] = this._parent.Anchor;
+                    arrayIndex = (arrayIndex + 1);
+                }
             }
             
             /// <summary>
@@ -676,6 +1314,21 @@ namespace Metamodel.DeepPCM.Core.Composition
                 {
                     return true;
                 }
+                if ((this._parent.DeclaringType == item))
+                {
+                    this._parent.DeclaringType = null;
+                    return true;
+                }
+                if ((this._parent.Opposite == item))
+                {
+                    this._parent.Opposite = null;
+                    return true;
+                }
+                if ((this._parent.Anchor == item))
+                {
+                    this._parent.Anchor = null;
+                    return true;
+                }
                 return false;
             }
             
@@ -685,7 +1338,7 @@ namespace Metamodel.DeepPCM.Core.Composition
             /// <returns>A generic enumerator</returns>
             public override IEnumerator<IModelElement> GetEnumerator()
             {
-                return Enumerable.Empty<IModelElement>().Concat(this._parent.ParentStructure__eventChannelArchitecture).Concat(this._parent.EventSubscriber).Concat(this._parent.EventPublisher).GetEnumerator();
+                return Enumerable.Empty<IModelElement>().Concat(this._parent.ParentStructure__eventChannelArchitecture).Concat(this._parent.EventSubscriber).Concat(this._parent.EventPublisher).Concat(this._parent.DeclaringType).Concat(this._parent.Opposite).Concat(this._parent.Anchor).GetEnumerator();
             }
         }
         
@@ -735,6 +1388,545 @@ namespace Metamodel.DeepPCM.Core.Composition
             protected override void UnregisterChangeEventHandler(System.EventHandler<NMF.Expressions.ValueChangedEventArgs> handler)
             {
                 this.ModelElement.ParentStructure__eventChannelArchitectureChanged -= handler;
+            }
+        }
+        
+        /// <summary>
+        /// Represents a proxy to represent an incremental access to the IsContainment property
+        /// </summary>
+        private sealed class IsContainmentProxy : ModelPropertyChange<IReference, bool>
+        {
+            
+            /// <summary>
+            /// Creates a new observable property access proxy
+            /// </summary>
+            /// <param name="modelElement">The model instance element for which to create the property access proxy</param>
+            public IsContainmentProxy(IReference modelElement) : 
+                    base(modelElement)
+            {
+            }
+            
+            /// <summary>
+            /// Gets or sets the value of this expression
+            /// </summary>
+            public override bool Value
+            {
+                get
+                {
+                    return this.ModelElement.IsContainment;
+                }
+                set
+                {
+                    this.ModelElement.IsContainment = value;
+                }
+            }
+            
+            /// <summary>
+            /// Registers an event handler to subscribe specifically on the changed event for this property
+            /// </summary>
+            /// <param name="handler">The handler that should be subscribed to the property change event</param>
+            protected override void RegisterChangeEventHandler(System.EventHandler<NMF.Expressions.ValueChangedEventArgs> handler)
+            {
+                this.ModelElement.IsContainmentChanged += handler;
+            }
+            
+            /// <summary>
+            /// Registers an event handler to subscribe specifically on the changed event for this property
+            /// </summary>
+            /// <param name="handler">The handler that should be unsubscribed from the property change event</param>
+            protected override void UnregisterChangeEventHandler(System.EventHandler<NMF.Expressions.ValueChangedEventArgs> handler)
+            {
+                this.ModelElement.IsContainmentChanged -= handler;
+            }
+        }
+        
+        /// <summary>
+        /// Represents a proxy to represent an incremental access to the DeclaringType property
+        /// </summary>
+        private sealed class DeclaringTypeProxy : ModelPropertyChange<IReference, IReferenceType>
+        {
+            
+            /// <summary>
+            /// Creates a new observable property access proxy
+            /// </summary>
+            /// <param name="modelElement">The model instance element for which to create the property access proxy</param>
+            public DeclaringTypeProxy(IReference modelElement) : 
+                    base(modelElement)
+            {
+            }
+            
+            /// <summary>
+            /// Gets or sets the value of this expression
+            /// </summary>
+            public override IReferenceType Value
+            {
+                get
+                {
+                    return this.ModelElement.DeclaringType;
+                }
+                set
+                {
+                    this.ModelElement.DeclaringType = value;
+                }
+            }
+            
+            /// <summary>
+            /// Registers an event handler to subscribe specifically on the changed event for this property
+            /// </summary>
+            /// <param name="handler">The handler that should be subscribed to the property change event</param>
+            protected override void RegisterChangeEventHandler(System.EventHandler<NMF.Expressions.ValueChangedEventArgs> handler)
+            {
+                this.ModelElement.DeclaringTypeChanged += handler;
+            }
+            
+            /// <summary>
+            /// Registers an event handler to subscribe specifically on the changed event for this property
+            /// </summary>
+            /// <param name="handler">The handler that should be unsubscribed from the property change event</param>
+            protected override void UnregisterChangeEventHandler(System.EventHandler<NMF.Expressions.ValueChangedEventArgs> handler)
+            {
+                this.ModelElement.DeclaringTypeChanged -= handler;
+            }
+        }
+        
+        /// <summary>
+        /// Represents a proxy to represent an incremental access to the Opposite property
+        /// </summary>
+        private sealed class OppositeProxy : ModelPropertyChange<IReference, IReference>
+        {
+            
+            /// <summary>
+            /// Creates a new observable property access proxy
+            /// </summary>
+            /// <param name="modelElement">The model instance element for which to create the property access proxy</param>
+            public OppositeProxy(IReference modelElement) : 
+                    base(modelElement)
+            {
+            }
+            
+            /// <summary>
+            /// Gets or sets the value of this expression
+            /// </summary>
+            public override IReference Value
+            {
+                get
+                {
+                    return this.ModelElement.Opposite;
+                }
+                set
+                {
+                    this.ModelElement.Opposite = value;
+                }
+            }
+            
+            /// <summary>
+            /// Registers an event handler to subscribe specifically on the changed event for this property
+            /// </summary>
+            /// <param name="handler">The handler that should be subscribed to the property change event</param>
+            protected override void RegisterChangeEventHandler(System.EventHandler<NMF.Expressions.ValueChangedEventArgs> handler)
+            {
+                this.ModelElement.OppositeChanged += handler;
+            }
+            
+            /// <summary>
+            /// Registers an event handler to subscribe specifically on the changed event for this property
+            /// </summary>
+            /// <param name="handler">The handler that should be unsubscribed from the property change event</param>
+            protected override void UnregisterChangeEventHandler(System.EventHandler<NMF.Expressions.ValueChangedEventArgs> handler)
+            {
+                this.ModelElement.OppositeChanged -= handler;
+            }
+        }
+        
+        /// <summary>
+        /// Represents a proxy to represent an incremental access to the ReferenceType property
+        /// </summary>
+        private sealed class ReferenceTypeProxy : ModelPropertyChange<IReference, IReferenceType>
+        {
+            
+            /// <summary>
+            /// Creates a new observable property access proxy
+            /// </summary>
+            /// <param name="modelElement">The model instance element for which to create the property access proxy</param>
+            public ReferenceTypeProxy(IReference modelElement) : 
+                    base(modelElement)
+            {
+            }
+            
+            /// <summary>
+            /// Gets or sets the value of this expression
+            /// </summary>
+            public override IReferenceType Value
+            {
+                get
+                {
+                    return this.ModelElement.ReferenceType;
+                }
+                set
+                {
+                    this.ModelElement.ReferenceType = value;
+                }
+            }
+            
+            /// <summary>
+            /// Registers an event handler to subscribe specifically on the changed event for this property
+            /// </summary>
+            /// <param name="handler">The handler that should be subscribed to the property change event</param>
+            protected override void RegisterChangeEventHandler(System.EventHandler<NMF.Expressions.ValueChangedEventArgs> handler)
+            {
+                this.ModelElement.ReferenceTypeChanged += handler;
+            }
+            
+            /// <summary>
+            /// Registers an event handler to subscribe specifically on the changed event for this property
+            /// </summary>
+            /// <param name="handler">The handler that should be unsubscribed from the property change event</param>
+            protected override void UnregisterChangeEventHandler(System.EventHandler<NMF.Expressions.ValueChangedEventArgs> handler)
+            {
+                this.ModelElement.ReferenceTypeChanged -= handler;
+            }
+        }
+        
+        /// <summary>
+        /// Represents a proxy to represent an incremental access to the Refines property
+        /// </summary>
+        private sealed class RefinesProxy : ModelPropertyChange<IReference, IReference>
+        {
+            
+            /// <summary>
+            /// Creates a new observable property access proxy
+            /// </summary>
+            /// <param name="modelElement">The model instance element for which to create the property access proxy</param>
+            public RefinesProxy(IReference modelElement) : 
+                    base(modelElement)
+            {
+            }
+            
+            /// <summary>
+            /// Gets or sets the value of this expression
+            /// </summary>
+            public override IReference Value
+            {
+                get
+                {
+                    return this.ModelElement.Refines;
+                }
+                set
+                {
+                    this.ModelElement.Refines = value;
+                }
+            }
+            
+            /// <summary>
+            /// Registers an event handler to subscribe specifically on the changed event for this property
+            /// </summary>
+            /// <param name="handler">The handler that should be subscribed to the property change event</param>
+            protected override void RegisterChangeEventHandler(System.EventHandler<NMF.Expressions.ValueChangedEventArgs> handler)
+            {
+                this.ModelElement.RefinesChanged += handler;
+            }
+            
+            /// <summary>
+            /// Registers an event handler to subscribe specifically on the changed event for this property
+            /// </summary>
+            /// <param name="handler">The handler that should be unsubscribed from the property change event</param>
+            protected override void UnregisterChangeEventHandler(System.EventHandler<NMF.Expressions.ValueChangedEventArgs> handler)
+            {
+                this.ModelElement.RefinesChanged -= handler;
+            }
+        }
+        
+        /// <summary>
+        /// Represents a proxy to represent an incremental access to the Anchor property
+        /// </summary>
+        private sealed class AnchorProxy : ModelPropertyChange<IReference, IClass>
+        {
+            
+            /// <summary>
+            /// Creates a new observable property access proxy
+            /// </summary>
+            /// <param name="modelElement">The model instance element for which to create the property access proxy</param>
+            public AnchorProxy(IReference modelElement) : 
+                    base(modelElement)
+            {
+            }
+            
+            /// <summary>
+            /// Gets or sets the value of this expression
+            /// </summary>
+            public override IClass Value
+            {
+                get
+                {
+                    return this.ModelElement.Anchor;
+                }
+                set
+                {
+                    this.ModelElement.Anchor = value;
+                }
+            }
+            
+            /// <summary>
+            /// Registers an event handler to subscribe specifically on the changed event for this property
+            /// </summary>
+            /// <param name="handler">The handler that should be subscribed to the property change event</param>
+            protected override void RegisterChangeEventHandler(System.EventHandler<NMF.Expressions.ValueChangedEventArgs> handler)
+            {
+                this.ModelElement.AnchorChanged += handler;
+            }
+            
+            /// <summary>
+            /// Registers an event handler to subscribe specifically on the changed event for this property
+            /// </summary>
+            /// <param name="handler">The handler that should be unsubscribed from the property change event</param>
+            protected override void UnregisterChangeEventHandler(System.EventHandler<NMF.Expressions.ValueChangedEventArgs> handler)
+            {
+                this.ModelElement.AnchorChanged -= handler;
+            }
+        }
+        
+        /// <summary>
+        /// Represents a proxy to represent an incremental access to the IsOrdered property
+        /// </summary>
+        private sealed class IsOrderedProxy : ModelPropertyChange<ITypedElement, bool>
+        {
+            
+            /// <summary>
+            /// Creates a new observable property access proxy
+            /// </summary>
+            /// <param name="modelElement">The model instance element for which to create the property access proxy</param>
+            public IsOrderedProxy(ITypedElement modelElement) : 
+                    base(modelElement)
+            {
+            }
+            
+            /// <summary>
+            /// Gets or sets the value of this expression
+            /// </summary>
+            public override bool Value
+            {
+                get
+                {
+                    return this.ModelElement.IsOrdered;
+                }
+                set
+                {
+                    this.ModelElement.IsOrdered = value;
+                }
+            }
+            
+            /// <summary>
+            /// Registers an event handler to subscribe specifically on the changed event for this property
+            /// </summary>
+            /// <param name="handler">The handler that should be subscribed to the property change event</param>
+            protected override void RegisterChangeEventHandler(System.EventHandler<NMF.Expressions.ValueChangedEventArgs> handler)
+            {
+                this.ModelElement.IsOrderedChanged += handler;
+            }
+            
+            /// <summary>
+            /// Registers an event handler to subscribe specifically on the changed event for this property
+            /// </summary>
+            /// <param name="handler">The handler that should be unsubscribed from the property change event</param>
+            protected override void UnregisterChangeEventHandler(System.EventHandler<NMF.Expressions.ValueChangedEventArgs> handler)
+            {
+                this.ModelElement.IsOrderedChanged -= handler;
+            }
+        }
+        
+        /// <summary>
+        /// Represents a proxy to represent an incremental access to the IsUnique property
+        /// </summary>
+        private sealed class IsUniqueProxy : ModelPropertyChange<ITypedElement, bool>
+        {
+            
+            /// <summary>
+            /// Creates a new observable property access proxy
+            /// </summary>
+            /// <param name="modelElement">The model instance element for which to create the property access proxy</param>
+            public IsUniqueProxy(ITypedElement modelElement) : 
+                    base(modelElement)
+            {
+            }
+            
+            /// <summary>
+            /// Gets or sets the value of this expression
+            /// </summary>
+            public override bool Value
+            {
+                get
+                {
+                    return this.ModelElement.IsUnique;
+                }
+                set
+                {
+                    this.ModelElement.IsUnique = value;
+                }
+            }
+            
+            /// <summary>
+            /// Registers an event handler to subscribe specifically on the changed event for this property
+            /// </summary>
+            /// <param name="handler">The handler that should be subscribed to the property change event</param>
+            protected override void RegisterChangeEventHandler(System.EventHandler<NMF.Expressions.ValueChangedEventArgs> handler)
+            {
+                this.ModelElement.IsUniqueChanged += handler;
+            }
+            
+            /// <summary>
+            /// Registers an event handler to subscribe specifically on the changed event for this property
+            /// </summary>
+            /// <param name="handler">The handler that should be unsubscribed from the property change event</param>
+            protected override void UnregisterChangeEventHandler(System.EventHandler<NMF.Expressions.ValueChangedEventArgs> handler)
+            {
+                this.ModelElement.IsUniqueChanged -= handler;
+            }
+        }
+        
+        /// <summary>
+        /// Represents a proxy to represent an incremental access to the LowerBound property
+        /// </summary>
+        private sealed class LowerBoundProxy : ModelPropertyChange<ITypedElement, int>
+        {
+            
+            /// <summary>
+            /// Creates a new observable property access proxy
+            /// </summary>
+            /// <param name="modelElement">The model instance element for which to create the property access proxy</param>
+            public LowerBoundProxy(ITypedElement modelElement) : 
+                    base(modelElement)
+            {
+            }
+            
+            /// <summary>
+            /// Gets or sets the value of this expression
+            /// </summary>
+            public override int Value
+            {
+                get
+                {
+                    return this.ModelElement.LowerBound;
+                }
+                set
+                {
+                    this.ModelElement.LowerBound = value;
+                }
+            }
+            
+            /// <summary>
+            /// Registers an event handler to subscribe specifically on the changed event for this property
+            /// </summary>
+            /// <param name="handler">The handler that should be subscribed to the property change event</param>
+            protected override void RegisterChangeEventHandler(System.EventHandler<NMF.Expressions.ValueChangedEventArgs> handler)
+            {
+                this.ModelElement.LowerBoundChanged += handler;
+            }
+            
+            /// <summary>
+            /// Registers an event handler to subscribe specifically on the changed event for this property
+            /// </summary>
+            /// <param name="handler">The handler that should be unsubscribed from the property change event</param>
+            protected override void UnregisterChangeEventHandler(System.EventHandler<NMF.Expressions.ValueChangedEventArgs> handler)
+            {
+                this.ModelElement.LowerBoundChanged -= handler;
+            }
+        }
+        
+        /// <summary>
+        /// Represents a proxy to represent an incremental access to the UpperBound property
+        /// </summary>
+        private sealed class UpperBoundProxy : ModelPropertyChange<ITypedElement, int>
+        {
+            
+            /// <summary>
+            /// Creates a new observable property access proxy
+            /// </summary>
+            /// <param name="modelElement">The model instance element for which to create the property access proxy</param>
+            public UpperBoundProxy(ITypedElement modelElement) : 
+                    base(modelElement)
+            {
+            }
+            
+            /// <summary>
+            /// Gets or sets the value of this expression
+            /// </summary>
+            public override int Value
+            {
+                get
+                {
+                    return this.ModelElement.UpperBound;
+                }
+                set
+                {
+                    this.ModelElement.UpperBound = value;
+                }
+            }
+            
+            /// <summary>
+            /// Registers an event handler to subscribe specifically on the changed event for this property
+            /// </summary>
+            /// <param name="handler">The handler that should be subscribed to the property change event</param>
+            protected override void RegisterChangeEventHandler(System.EventHandler<NMF.Expressions.ValueChangedEventArgs> handler)
+            {
+                this.ModelElement.UpperBoundChanged += handler;
+            }
+            
+            /// <summary>
+            /// Registers an event handler to subscribe specifically on the changed event for this property
+            /// </summary>
+            /// <param name="handler">The handler that should be unsubscribed from the property change event</param>
+            protected override void UnregisterChangeEventHandler(System.EventHandler<NMF.Expressions.ValueChangedEventArgs> handler)
+            {
+                this.ModelElement.UpperBoundChanged -= handler;
+            }
+        }
+        
+        /// <summary>
+        /// Represents a proxy to represent an incremental access to the Type property
+        /// </summary>
+        private sealed class TypeProxy : ModelPropertyChange<ITypedElement, IType>
+        {
+            
+            /// <summary>
+            /// Creates a new observable property access proxy
+            /// </summary>
+            /// <param name="modelElement">The model instance element for which to create the property access proxy</param>
+            public TypeProxy(ITypedElement modelElement) : 
+                    base(modelElement)
+            {
+            }
+            
+            /// <summary>
+            /// Gets or sets the value of this expression
+            /// </summary>
+            public override IType Value
+            {
+                get
+                {
+                    return this.ModelElement.Type;
+                }
+                set
+                {
+                    this.ModelElement.Type = value;
+                }
+            }
+            
+            /// <summary>
+            /// Registers an event handler to subscribe specifically on the changed event for this property
+            /// </summary>
+            /// <param name="handler">The handler that should be subscribed to the property change event</param>
+            protected override void RegisterChangeEventHandler(System.EventHandler<NMF.Expressions.ValueChangedEventArgs> handler)
+            {
+                this.ModelElement.TypeChanged += handler;
+            }
+            
+            /// <summary>
+            /// Registers an event handler to subscribe specifically on the changed event for this property
+            /// </summary>
+            /// <param name="handler">The handler that should be unsubscribed from the property change event</param>
+            protected override void UnregisterChangeEventHandler(System.EventHandler<NMF.Expressions.ValueChangedEventArgs> handler)
+            {
+                this.ModelElement.TypeChanged -= handler;
             }
         }
         

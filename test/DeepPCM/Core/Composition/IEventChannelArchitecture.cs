@@ -42,7 +42,7 @@ namespace Metamodel.DeepPCM.Core.Composition
     /// </summary>
     [DefaultImplementationTypeAttribute(typeof(EventChannelArchitecture))]
     [XmlDefaultImplementationTypeAttribute(typeof(EventChannelArchitecture))]
-    public interface IEventChannelArchitecture : IModelElement, IEntity, IClass
+    public interface IEventChannelArchitecture : IModelElement, IEntity, IReference
     {
         
         /// <summary>

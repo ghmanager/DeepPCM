@@ -77,6 +77,15 @@ namespace Metamodel.Assembly
         }
         
         /// <summary>
+        /// The Channel property
+        /// </summary>
+        IResourceContainer Channel
+        {
+            get;
+            set;
+        }
+        
+        /// <summary>
         /// Gets fired before the Sender property changes its value
         /// </summary>
         event System.EventHandler<ValueChangedEventArgs> SenderChanging;
@@ -115,6 +124,16 @@ namespace Metamodel.Assembly
         /// Gets fired when the ChannelReceiver2 property changed its value
         /// </summary>
         event System.EventHandler<ValueChangedEventArgs> ChannelReceiver2Changed;
+        
+        /// <summary>
+        /// Gets fired before the Channel property changes its value
+        /// </summary>
+        event System.EventHandler<ValueChangedEventArgs> ChannelChanging;
+        
+        /// <summary>
+        /// Gets fired when the Channel property changed its value
+        /// </summary>
+        event System.EventHandler<ValueChangedEventArgs> ChannelChanged;
     }
 }
 

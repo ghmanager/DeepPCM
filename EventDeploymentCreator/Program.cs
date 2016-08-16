@@ -37,7 +37,7 @@ namespace EventDeploymentCreator
         public static INamespace CreateEventDeployment(Uri uri)
         {
             var resourceContainer = new ResourceContainer() { Id = "ApplicationServer" };
-            var middlewareServer = new ResourceContainer() { Id = "ApplicationServer" };
+            var middlewareServer = new ResourceContainer() { Id = "MiddlewareServer" };
             var computeEnvironment = new ResourceEnvironment();
             computeEnvironment.ResourceContainer_ResourceEnvironment.Add(resourceContainer);
             computeEnvironment.ResourceContainer_ResourceEnvironment.Add(middlewareServer);
@@ -47,6 +47,7 @@ namespace EventDeploymentCreator
             deployment.Receiver = resourceContainer;
             deployment.ChannelReceiver = resourceContainer;
             deployment.ChannelReceiver2 = resourceContainer;
+            deployment.Channel = middlewareServer;
 
             var eventTesterL3 = new Namespace()
             {

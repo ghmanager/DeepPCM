@@ -5,15 +5,14 @@
     <assemblyContexts__ComposedStructure xsi:type="repo:Receiver" BasicSubscriber="//EventSystemArchitecture//Sender/" Name="Receiver" />
     <assemblyContexts__ComposedStructure xsi:type="repo:ChannelReceiver" Name="ChannelReceiver" />
     <assemblyContexts__ComposedStructure xsi:type="repo:ChannelReceiver" Name="ChannelReceiver2" />
+    <eventChannelArchitecture__ComposedStructure xsi:type="repo:ExampleChannel" EventSubscriber="//EventSystemArchitecture//ChannelReceiver/ //EventSystemArchitecture//ChannelReceiver2/" EventPublisher="//EventSystemArchitecture//Sender/" Name="Channel" />
     <References xsi:type="repo:Sender" Name="Sender" />
     <References xsi:type="repo:Receiver" BasicSubscriber="//EventSystemArchitecture//Sender/" Name="Receiver" />
     <References xsi:type="repo:ChannelReceiver" Name="ChannelReceiver" />
     <References xsi:type="repo:ChannelReceiver" Name="ChannelReceiver2" />
+    <References xsi:type="repo:ExampleChannel" EventSubscriber="//EventSystemArchitecture//ChannelReceiver/ //EventSystemArchitecture//ChannelReceiver2/" EventPublisher="//EventSystemArchitecture//Sender/" Name="Channel" />
   </Types>
-</nmeta:Namespace>ture xsi:type="repo:EventGroup" EventSubscriber="//EventSystemArchitecture//Receiver/" EventPublisher="//EventSystemArchitecture//Sender/" Name="P2PConnection" />
-    <eventTransmitter__ComposedStructure xsi:type="repo:EventGroupChannel" EventSubscriber="//EventSystemArchitecture//ChannelReceiver/ //EventSystemArchitecture//ChannelReceiver2/" EventPublisher="//EventSystemArchitecture//Sender/" Name="Channel1" />
-    <References xsi:type="repo:Sender" Name="Sender" />
-    <References xsi:type="repo:Receiver" Name="Receiver" />
+</nmeta:Namespace>erences xsi:type="repo:Receiver" Name="Receiver" />
     <References xsi:type="repo:ChannelReceiver" Name="ChannelReceiver" />
     <References xsi:type="repo:ChannelReceiver" Name="ChannelReceiver2" />
   </Types>

@@ -980,7 +980,7 @@ namespace Metamodel.Repo
         /// <summary>
         /// Gets the Class for this model element
         /// </summary>
-        public override IClass GetClass()
+        public virtual IClass GetClass()
         {
             if ((_classInstance == null))
             {
